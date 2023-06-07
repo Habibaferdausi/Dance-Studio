@@ -65,7 +65,7 @@ const AllUsers = () => {
                 <td>{user.email}</td>
                 <td>
                   {user.role === "admin" ? (
-                    "admin"
+                    "Admin"
                   ) : (
                     <button
                       onClick={() => handleMakeRole(user, "admin")}
@@ -76,12 +76,22 @@ const AllUsers = () => {
                   )}
                 </td>
                 <td>
-                  <button
+                  {user.role === "teacher" ? (
+                    "Teacher"
+                  ) : (
+                    <button
+                      onClick={() => handleMakeRole(user, "teacher")}
+                      className="btn btn-ghost bg-orange-600 text-white"
+                    >
+                      Make Teacher
+                    </button>
+                  )}
+                  {/* <button
                     onClick={() => handleMakeRole(user, "teacher")}
                     className="btn btn-ghost bg-blue-600 text-white"
                   >
                     Make Teacher
-                  </button>
+                  </button> */}
                 </td>
 
                 <td>
