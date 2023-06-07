@@ -5,11 +5,14 @@ import useAuth from "../Hooks/useAuth";
 
 const Nav = () => {
   const { user, logOut } = useAuth();
+  console.log(user);
+
   const handleLogOut = () => {
     logOut()
       .then(() => {})
       .catch((error) => console.log(error));
   };
+
   return (
     <div>
       <Navbar fluid rounded>
@@ -24,25 +27,31 @@ const Nav = () => {
           </span>
         </Navbar.Brand>
         <div className="flex md:order-2">
-          <Dropdown
-            inline
-            label={<Avatar alt="User settings" img={user?.photoURL} rounded />}
-          >
-            <Dropdown.Header>
-              <span className="block text-sm">{user?.displayName}</span>
-              <span className="block truncate text-sm font-medium">
-                {user?.email}
-              </span>
-            </Dropdown.Header>
-
-            <Dropdown.Divider />
-            <Dropdown.Item>
-              {" "}
-              <button onClick={handleLogOut} className="btn btn-ghost">
-                LogOut
-              </button>
-            </Dropdown.Item>
-          </Dropdown>
+          {user ? (
+            <Dropdown
+              inline
+              label={
+                <Avatar alt="User settings" img={user?.photoURL} rounded />
+              }
+            >
+              <Dropdown.Header>
+                <span className="block text-sm">{user?.displayName}</span>
+                <span className="block truncate text-sm font-medium">
+                  {user?.email}
+                </span>
+              </Dropdown.Header>
+              <Dropdown.Divider />
+              <Dropdown.Item>
+                <button onClick={handleLogOut} className="btn btn-ghost">
+                  LogOut
+                </button>
+              </Dropdown.Item>
+            </Dropdown>
+          ) : (
+            <Navbar.Link>
+              <Link to="/login">Login</Link>
+            </Navbar.Link>
+          )}
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse>
@@ -51,15 +60,12 @@ const Nav = () => {
           </Navbar.Link>
           <Navbar.Link>instructors</Navbar.Link>
           <Navbar.Link>Classes</Navbar.Link>
-          <Navbar.Link>
-            {" "}
-            <Link to="/dashboard">Dashboard</Link>
-          </Navbar.Link>
+          {user && (
+            <Navbar.Link>
+              <Link to="/dashboard">Dashboard</Link>
+            </Navbar.Link>
+          )}
           <Navbar.Link>Contact</Navbar.Link>
-
-          <Navbar.Link>
-            <Link to="/login">Login</Link>
-          </Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
     </div>

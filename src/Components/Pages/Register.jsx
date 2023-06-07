@@ -21,36 +21,56 @@ const Register = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    createUser(data.email, data.password).then((result) => {
-      const loggedUser = result.user;
-      console.log(loggedUser);
-      updateUserProfile(data.name, data.photoURL)
-        .then(() => {
-          const saveUser = { name: data.name, email: data.email };
-          fetch("http://localhost:4000/users", {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(saveUser),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              if (data.insertedId) {
-                Swal.fire({
-                  position: "top-end",
-                  icon: "success",
-                  title: "User created successfully.",
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
-                navigate("/");
-              }
+    createUser(data.email, data.password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        updateUserProfile(data.name, data.photoURL)
+          .then(() => {
+            Swal.fire({
+              position: "top",
+              icon: "success",
+              title: "Successfully Register",
+              showConfirmButton: false,
+              timer: 1500,
             });
-        })
-        .catch((error) => console.log(error));
-    });
+          })
+          .catch((err) => {
+            console.log(err.message);
+          });
+        console.log(result.user);
+        Swal.fire("Something Wrong! Try again");
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
+
+  //         const saveUser = { name: data.name, email: data.email };
+  //         fetch("http://localhost:4000/users", {
+  //           method: "POST",
+  //           headers: {
+  //             "content-type": "application/json",
+  //           },
+  //           body: JSON.stringify(saveUser),
+  //         })
+  //           .then((res) => res.json())
+  //           .then((data) => {
+  //             if (data.insertedId) {
+  //               Swal.fire({
+  //                 position: "top-end",
+  //                 icon: "success",
+  //                 title: "User created successfully.",
+  //                 showConfirmButton: false,
+  //                 timer: 1500,
+  //               });
+  //               navigate("/");
+  //             }
+  //           });
+  //       })
+  //       .catch((error) => console.log(error));
+  //   });
+  // };
 
   const handleGoogleSignIn = () => {
     googleSignIn().then((result) => {

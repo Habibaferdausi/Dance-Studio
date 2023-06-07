@@ -14,42 +14,65 @@ const Login = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    signIn(email, password).then((result) => {
-      const user = result.user;
-      console.log(user);
-      Swal.fire({
-        title: "User Login Successful.",
-        showClass: {
-          popup: "animate__animated animate__fadeInDown",
-        },
-        hideClass: {
-          popup: "animate__animated animate__fadeOutUp",
-        },
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate(from, { replace: true });
+        Swal.fire({
+          position: "top",
+          icon: "success",
+          title: "Successfully Login",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+        });
       });
-      navigate(from, { replace: true });
-    });
   };
   const handleGoogleSignIn = () => {
-    googleSignIn().then((result) => {
-      const loggedInUser = result.user;
-      console.log(loggedInUser);
-      const saveUser = {
-        name: loggedInUser.displayName,
-        email: loggedInUser.email,
-      };
-      fetch("http://localhost:4000/users", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(saveUser),
-      })
-        .then((res) => res.json())
-        .then(() => {
-          navigate(from, { replace: true });
+    googleSignIn()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate(from, { replace: true });
+        Swal.fire({
+          position: "top",
+          icon: "success",
+          title: "Successfully Login",
+          showConfirmButton: false,
+          timer: 1500,
         });
-    });
+      })
+
+      .catch((error) => {
+        console.log(error);
+      });
   };
+
+  // const loggedInUser = result.user;
+  // console.log(loggedInUser);
+  // const saveUser = {
+  //   name: loggedInUser.displayName,
+  //   email: loggedInUser.email,
+  // };
+  // fetch("http://localhost:4000/users", {
+  //   method: "POST",
+  //   headers: {
+  //     "content-type": "application/json",
+  //   },
+  //   body: JSON.stringify(saveUser),
+  // })
+  //   .then((res) => res.json())
+  //   .then(() => {
+  //     navigate(from, { replace: true });
+  //   });
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
