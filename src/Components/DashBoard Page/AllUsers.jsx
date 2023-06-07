@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-
 import { FaTrashAlt, FaUserShield } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxios from "../Hooks/useAxios";
@@ -65,7 +64,7 @@ const AllUsers = () => {
                 <td>{user.email}</td>
                 <td>
                   {user.role === "admin" ? (
-                    "Admin"
+                    "admin"
                   ) : (
                     <button
                       onClick={() => handleMakeRole(user, "admin")}
@@ -76,22 +75,16 @@ const AllUsers = () => {
                   )}
                 </td>
                 <td>
-                  {user.role === "teacher" ? (
-                    "Teacher"
+                  {user.role === "instructor" ? (
+                    "instructor"
                   ) : (
                     <button
-                      onClick={() => handleMakeRole(user, "teacher")}
+                      onClick={() => handleMakeRole(user, "instructor")}
                       className="btn btn-ghost bg-orange-600 text-white"
                     >
-                      Make Teacher
+                      Make instructor
                     </button>
                   )}
-                  {/* <button
-                    onClick={() => handleMakeRole(user, "teacher")}
-                    className="btn btn-ghost bg-blue-600 text-white"
-                  >
-                    Make Teacher
-                  </button> */}
                 </td>
 
                 <td>

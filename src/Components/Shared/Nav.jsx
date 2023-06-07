@@ -49,7 +49,7 @@ const Nav = () => {
           <Navbar.Link>
             <Link to="/">Home</Link>
           </Navbar.Link>
-          <Navbar.Link>Instructors</Navbar.Link>
+          <Navbar.Link>instructors</Navbar.Link>
           <Navbar.Link>Classes</Navbar.Link>
           <Navbar.Link>
             {" "}
