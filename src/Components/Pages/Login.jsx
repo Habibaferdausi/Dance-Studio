@@ -5,8 +5,8 @@ import useAuth from "../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { register, handleSubmit, googleSignIn } = useForm();
-  const { signIn } = useAuth();
+  const { register, handleSubmit } = useForm();
+  const { signIn, googleSignIn } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 

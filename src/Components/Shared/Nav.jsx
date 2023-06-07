@@ -1,8 +1,15 @@
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import React from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
 
 const Nav = () => {
+  const { user, logOut } = useAuth();
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
   return (
     <div>
       <Navbar fluid rounded>
@@ -19,34 +26,36 @@ const Nav = () => {
         <div className="flex md:order-2">
           <Dropdown
             inline
-            label={
-              <Avatar
-                alt="User settings"
-                img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                rounded
-              />
-            }
+            label={<Avatar alt="User settings" img={user?.photoURL} rounded />}
           >
             <Dropdown.Header>
-              <span className="block text-sm">Bonnie Green</span>
+              <span className="block text-sm">{user?.displayName}</span>
               <span className="block truncate text-sm font-medium">
-                name@flowbite.com
+                {user?.email}
               </span>
             </Dropdown.Header>
 
             <Dropdown.Divider />
-            <Dropdown.Item>Sign out</Dropdown.Item>
+            <Dropdown.Item>
+              {" "}
+              <button onClick={handleLogOut} className="btn btn-ghost">
+                LogOut
+              </button>
+            </Dropdown.Item>
           </Dropdown>
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse>
-          <Navbar.Link active href="#">
-            <p>Home</p>
+          <Navbar.Link>
+            <Link to="/">Home</Link>
           </Navbar.Link>
-          <Navbar.Link href="#">Instructors</Navbar.Link>
-          <Navbar.Link href="#">Classes</Navbar.Link>
-          <Navbar.Link href="#">DashBoard</Navbar.Link>
-          <Navbar.Link href="#">Contact</Navbar.Link>
+          <Navbar.Link>Instructors</Navbar.Link>
+          <Navbar.Link>Classes</Navbar.Link>
+          <Navbar.Link>
+            {" "}
+            <Link to="/dashboard">Dashboard</Link>
+          </Navbar.Link>
+          <Navbar.Link>Contact</Navbar.Link>
 
           <Navbar.Link>
             <Link to="/login">Login</Link>
