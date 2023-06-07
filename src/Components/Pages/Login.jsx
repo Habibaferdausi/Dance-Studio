@@ -1,11 +1,54 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import React from "react";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import useAuth from "../Hooks/useAuth";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, googleSignIn } = useForm();
+  const { signIn } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
 
   const onSubmit = (data) => {
-    console.log(data); // You can replace this with your login logic
+    console.log(data);
+    signIn(email, password).then((result) => {
+      const user = result.user;
+      console.log(user);
+      Swal.fire({
+        title: "User Login Successful.",
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp",
+        },
+      });
+      navigate(from, { replace: true });
+    });
+  };
+  const handleGoogleSignIn = () => {
+    googleSignIn().then((result) => {
+      const loggedInUser = result.user;
+      console.log(loggedInUser);
+      const saveUser = {
+        name: loggedInUser.displayName,
+        email: loggedInUser.email,
+      };
+      fetch("http://localhost:4000/users", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(saveUser),
+      })
+        .then((res) => res.json())
+        .then(() => {
+          navigate(from, { replace: true });
+        });
+    });
   };
 
   return (
@@ -20,7 +63,7 @@ const Login = () => {
             <input
               type="email"
               id="email"
-              {...register('email')}
+              {...register("email")}
               className="border rounded-md py-2 px-3 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
@@ -33,7 +76,7 @@ const Login = () => {
               <input
                 type="password"
                 id="password"
-                {...register('password')}
+                {...register("password")}
                 className="border rounded-md py-2 px-3 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <div className="absolute top-1/2 right-3 transform -translate-y-1/2">
@@ -64,7 +107,7 @@ const Login = () => {
 
         <div className="mt-4 text-center">
           <p className="text-sm">
-            Don't have an account?{' '}
+            Don't have an account?{" "}
             <a href="/register" className="text-blue-500 hover:underline">
               Register
             </a>
@@ -74,10 +117,10 @@ const Login = () => {
         <div className="mt-6">
           <p className="text-sm">Or sign in with:</p>
           <div className="flex space-x-2 mt-2">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-              Facebook
-            </button>
-            <button className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+            <button
+              onClick={handleGoogleSignIn}
+              className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+            >
               Google
             </button>
           </div>
