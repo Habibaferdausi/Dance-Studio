@@ -9,6 +9,7 @@ import AllUsers from "../DashBoard Page/AllUsers";
 
 import AddClassForm from "../DashBoard Page/Instructor Dashboard/AddClassForm";
 import InstructorClass from "../DashBoard Page/Instructor Dashboard/InstructorClass";
+import AdminManage from "../DashBoard Page/AdminManage";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "instructorClass",
         element: <InstructorClass></InstructorClass>,
+      },
+      {
+        path: "manageClass",
+        element: <AdminManage></AdminManage>,
       },
     ],
   },

@@ -7,9 +7,7 @@ const ClassesList = ({ classes }) => {
         <div key={classItem._id} className="border p-4 my-4">
           <div className="flex items-center justify-between mb-2">
             <h2 className="text-xl font-bold">{classItem.className}</h2>
-            <span className="text-sm font-bold">
-              {classItem.status === "denied" ? "Denied" : "Pending"}
-            </span>
+            <span className="text-sm font-bold">{classItem.status}</span>
           </div>
           <img
             src={classItem.classImage}
@@ -22,9 +20,7 @@ const ClassesList = ({ classes }) => {
             Available Seats: {classItem.availableSeats}
           </p>
           <p className="text-gray-700">Price: {classItem.price}</p>
-          {classItem.status === "denied" && (
-            <p className="text-gray-700 mt-2">Feedback: {classItem.feedback}</p>
-          )}
+
           <p className="text-gray-700 mt-2">
             Total Enrolled Students: {classItem.totalEnrolledStudents}
           </p>

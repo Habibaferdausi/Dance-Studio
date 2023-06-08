@@ -49,7 +49,7 @@ const SideNav = ({ userRole }) => {
             {userRole === "admin" && (
               <>
                 <NavLink
-                  to="/manage-classes"
+                  to="manageClass"
                   className="flex items-center py-2 px-8 text-gray-400 hover:bg-gray-700 hover:text-white"
                   activeClassName="bg-gray-900 text-white"
                 >
@@ -57,7 +57,7 @@ const SideNav = ({ userRole }) => {
                   Manage Classes
                 </NavLink>
                 <NavLink
-                  to="/manage-users"
+                  to="allUsers"
                   className="flex items-center py-2 px-8 text-gray-400 hover:bg-gray-700 hover:text-white"
                   activeClassName="bg-gray-900 text-white"
                 >
@@ -69,7 +69,7 @@ const SideNav = ({ userRole }) => {
             {userRole === "instructor" && (
               <>
                 <NavLink
-                  to="/dashboard/addClass"
+                  to="addClass"
                   className="flex items-center py-2 px-8 text-gray-400 hover:bg-gray-700 hover:text-white"
                   activeClassName="bg-gray-900 text-white"
                 >
@@ -77,7 +77,7 @@ const SideNav = ({ userRole }) => {
                   Add a Class
                 </NavLink>
                 <NavLink
-                  to="/dashboard/instructorClass"
+                  to="instructorClass"
                   className="flex items-center py-2 px-8 text-gray-400 hover:bg-gray-700 hover:text-white"
                   activeClassName="bg-gray-900 text-white"
                 >
