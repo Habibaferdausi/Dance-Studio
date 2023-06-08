@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
 const AddClassForm = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -10,15 +11,7 @@ const AddClassForm = () => {
   const onSubmit = (data) => {
     const formData = new FormData();
     formData.append("image", data.image[0]);
-    const newClass = {
-      className: data.className,
-      classImage: data.imgURL,
-      instructorName: user?.displayName,
-      instructorEmail: user?.email,
-      availableSeats: data.availableSeats,
-      price: data.price,
-      status: "pending",
-    };
+
     fetch(img_hosting_url, {
       method: "POST",
       body: formData,
@@ -41,32 +34,34 @@ const AddClassForm = () => {
             classImage: imgURL,
             instructorName: user?.displayName,
             instructorEmail: user?.email,
-            availableSeats,
-            price,
+            availableSeats: parseFloat(availableSeats),
+            price: parseFloat(price),
             status: "pending",
           };
 
           // Make an API call to your backend server to save the new class
+          // ...
           fetch("http://localhost:4000/classes", {
             method: "POST",
             headers: {
               "content-type": "application/json",
             },
             body: JSON.stringify(newClass),
-          }).then((res) => res.json());
-          then((data) => {
-            console.log("after posting new menu item", data.data);
-            if (data.data.insertedId) {
-              reset();
-              Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Item added successfully",
-                showConfirmButton: false,
-                timer: 1500,
-              });
-            }
-          });
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log("New Class", data);
+              if (data.insertedId) {
+                reset();
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "Class added successfully",
+                  showConfirmButton: false,
+                  timer: 1000,
+                });
+              }
+            });
         }
       });
   };
@@ -89,8 +84,8 @@ const AddClassForm = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="label">
-            <span className="label-text"> Image*</span>
+          <label className="label block text-gray-700 font-bold mb-2">
+            <span className="label-text">Class Image</span>
           </label>
           <input
             type="file"
@@ -154,10 +149,10 @@ const AddClassForm = () => {
           />
         </div>
         <button
-          className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="w-full bg-red-900 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded"
           type="submit"
         >
-          Add
+          Add Class
         </button>
       </form>
     </div>
