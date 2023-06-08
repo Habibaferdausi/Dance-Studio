@@ -18,7 +18,7 @@ const Nav = () => {
       <Navbar fluid rounded>
         <Navbar.Brand href="/">
           <img
-            alt="Flowbite React Logo"
+            alt="Logo"
             className="mr-3 h-20 sm:h-28"
             src="https://i.ibb.co/PwPjsVY/AK-removebg-preview.png"
           />
@@ -55,16 +55,10 @@ const Nav = () => {
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse>
-          <Navbar.Link>
-            <Link to="/">Home</Link>
-          </Navbar.Link>
-          <Navbar.Link>instructors</Navbar.Link>
-          <Navbar.Link>Classes</Navbar.Link>
-          {user && (
-            <Navbar.Link>
-              <Link to="/dashboard">Dashboard</Link>
-            </Navbar.Link>
-          )}
+          <Link to="/">Home</Link>
+          <Link to="instructors">Instructors</Link>
+          <Link to="classes"> Classes</Link>
+          {user && <Link to="dashboard">Dashboard</Link>}
           <Navbar.Link>Contact</Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
