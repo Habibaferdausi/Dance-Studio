@@ -25,15 +25,40 @@ const AddClassForm = () => {
   };
 
   const handleAddClass = () => {
-    // Handle adding class to the database
-    // You can make an API call here to save the class details
-    // with the 'pending' status field
+    // Create a new class object with the form values
+    const newClass = {
+      className,
+      classImage,
+      instructorName: user?.displayName,
+      instructorEmail: user?.email,
+      availableSeats,
+      price,
+      status: "pending",
+    };
 
-    // Reset form fields
-    setClassName("");
-    setClassImage("");
-    setAvailableSeats("");
-    setPrice("");
+    // Make an API call to your backend server to save the new class
+    fetch("http://localhost:4000/classes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newClass),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Log the response from the server
+        console.log("Response from server:", data);
+
+        // Reset form fields
+        setClassName("");
+        setClassImage("");
+        setAvailableSeats("");
+        setPrice("");
+      })
+      .catch((error) => {
+        // Handle error if API call fails
+        console.error("Error:", error);
+      });
   };
 
   return (
