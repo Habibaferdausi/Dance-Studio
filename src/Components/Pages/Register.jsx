@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const {
@@ -38,39 +39,38 @@ const Register = () => {
           .catch((err) => {
             console.log(err.message);
           });
-        console.log(result.user);
-        Swal.fire("Something Wrong! Try again");
+
+        // Send data to localhost:4000/user
+        fetch("http://localhost:4000/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((responseData) => {
+            console.log(responseData);
+
+            Swal.fire({
+              position: "top",
+              icon: "success",
+              title: "Successfully Register",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          })
+          .catch((error) => {
+            console.log(error);
+            // Handle error
+          });
       })
       .catch((err) => {
         console.log(err.message);
       });
   };
 
-  //         const saveUser = { name: data.name, email: data.email };
-  //         fetch("http://localhost:4000/users", {
-  //           method: "POST",
-  //           headers: {
-  //             "content-type": "application/json",
-  //           },
-  //           body: JSON.stringify(saveUser),
-  //         })
-  //           .then((res) => res.json())
-  //           .then((data) => {
-  //             if (data.insertedId) {
-  //               Swal.fire({
-  //                 position: "top-end",
-  //                 icon: "success",
-  //                 title: "User created successfully.",
-  //                 showConfirmButton: false,
-  //                 timer: 1500,
-  //               });
-  //               navigate("/");
-  //             }
-  //           });
-  //       })
-  //       .catch((error) => console.log(error));
-  //   });
-  // };
+  //
 
   const handleGoogleSignIn = () => {
     googleSignIn().then((result) => {
@@ -79,17 +79,30 @@ const Register = () => {
       const saveUser = {
         name: loggedInUser.displayName,
         email: loggedInUser.email,
+        photoURL: loggedInUser.photoURL,
       };
+
       fetch("http://localhost:4000/users", {
         method: "POST",
         headers: {
-          "content-type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(saveUser),
       })
-        .then((res) => res.json())
-        .then(() => {
+        .then((response) => response.json())
+        .then((responseData) => {
+          console.log(responseData);
+          Swal.fire({
+            position: "top",
+            icon: "success",
+            title: "Successfully Registered with Google",
+            showConfirmButton: false,
+            timer: 1500,
+          });
           navigate(from, { replace: true });
+        })
+        .catch((error) => {
+          console.log(error);
         });
     });
   };

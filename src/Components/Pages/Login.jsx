@@ -37,42 +37,39 @@ const Login = () => {
       });
   };
   const handleGoogleSignIn = () => {
-    googleSignIn()
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-        navigate(from, { replace: true });
-        Swal.fire({
-          position: "top",
-          icon: "success",
-          title: "Successfully Login",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+    googleSignIn().then((result) => {
+      const loggedInUser = result.user;
+      console.log(loggedInUser);
+      const saveUser = {
+        name: loggedInUser.displayName,
+        email: loggedInUser.email,
+        photoURL: loggedInUser.photoURL,
+      };
+
+      fetch("http://localhost:4000/user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(saveUser),
       })
-
-      .catch((error) => {
-        console.log(error);
-      });
+        .then((response) => response.json())
+        .then((responseData) => {
+          console.log(responseData);
+          Swal.fire({
+            position: "top",
+            icon: "success",
+            title: "Successfully Login with Google",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate(from, { replace: true });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    });
   };
-
-  // const loggedInUser = result.user;
-  // console.log(loggedInUser);
-  // const saveUser = {
-  //   name: loggedInUser.displayName,
-  //   email: loggedInUser.email,
-  // };
-  // fetch("http://localhost:4000/users", {
-  //   method: "POST",
-  //   headers: {
-  //     "content-type": "application/json",
-  //   },
-  //   body: JSON.stringify(saveUser),
-  // })
-  //   .then((res) => res.json())
-  //   .then(() => {
-  //     navigate(from, { replace: true });
-  //   });
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">

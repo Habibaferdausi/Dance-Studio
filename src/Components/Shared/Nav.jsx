@@ -1,11 +1,13 @@
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
+import { FaSign, FaSignInAlt } from "react-icons/fa";
 
 const Nav = () => {
   const { user, logOut } = useAuth();
-  console.log(user);
+  const [navbarBgColor, setNavbarBgColor] = useState("bg-transparent");
+  const [navbarPosition, setNavbarPosition] = useState("static");
 
   const handleLogOut = () => {
     logOut()
@@ -13,9 +15,32 @@ const Nav = () => {
       .catch((error) => console.log(error));
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setNavbarBgColor("bg-red-200");
+        setNavbarPosition("fixed");
+      } else {
+        setNavbarBgColor("bg-transparent");
+        setNavbarPosition("static");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div>
-      <Navbar fluid rounded>
+      <Navbar
+        fluid
+        rounded
+        className={`transition-colors duration-500 ${navbarBgColor}`}
+        style={{ position: navbarPosition }}
+      >
         <Navbar.Brand href="/">
           <img
             alt="Logo"
@@ -48,9 +73,14 @@ const Nav = () => {
               </Dropdown.Item>
             </Dropdown>
           ) : (
-            <Navbar.Link>
-              <Link to="/login">Login</Link>
-            </Navbar.Link>
+            <Navbar.Collapse>
+              <Link
+                to="/login"
+                className="flex justify-center items-center gap-2 bg-yellow-800 rounded p-2 text-white"
+              >
+                <FaSignInAlt /> Login
+              </Link>
+            </Navbar.Collapse>
           )}
           <Navbar.Toggle />
         </div>

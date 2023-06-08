@@ -107,7 +107,7 @@ const Classes = () => {
               {classData?.price} $
             </p>
             <button
-              className="text-white text-lg font-semibold bg-red-900 p-2 mt-4"
+              className="text-white text-lg font-semibold bg-yellow-800 p-2 mt-4"
               disabled={
                 classData?.availableSeats === "0" ||
                 user?.role === "admin" ||
