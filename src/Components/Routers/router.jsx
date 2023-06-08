@@ -6,6 +6,7 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import Dashboard from "../Layout/Dashboard";
 import AllUsers from "../DashBoard Page/AllUsers";
+import AddClassForm from "../DashBoard Page/Instructor Dashboard/AddClassForm";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "allUsers",
         element: <AllUsers></AllUsers>,
+      },
+      {
+        path: "addClass",
+        element: <AddClassForm></AddClassForm>,
       },
     ],
   },
