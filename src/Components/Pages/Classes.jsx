@@ -8,22 +8,51 @@ import {
   faUserTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
+import useAxios from "../Hooks/useAxios";
 
 const Classes = () => {
   const [classes, setClasses] = useState([]);
   const { user } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [axiosHook] = useAxios();
 
-  fetch("http://localhost:4000/filterClasses")
-    .then((response) => response.json())
-    .then((data) => setClasses(data))
+  axiosHook
+    .get("/filterClasses")
+    .then((response) => {
+      const data = response.data;
+      setClasses(data);
+    })
     .catch((err) => {
       console.error("Error retrieving classes:", err);
       setClasses([]);
     });
+  const handleSelectClass = (classData) => {
+    const {
+      _id,
+      className,
+      classImage,
+      price,
+      availableSeats,
+      instructorName,
+    } = classData;
+    console.log(classData);
 
-  const handleSelectClass = (classId) => {
     if (!user) {
-      alert("Please log in before selecting a course.");
+      Swal.fire({
+        title: "Please login to order the food",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#003526",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Login now!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login", { state: { from: location } });
+        }
+      });
       return;
     }
 
@@ -32,19 +61,24 @@ const Classes = () => {
       return;
     }
 
-    fetch("http://localhost:4000/classes/select", {
+    fetch("http://localhost:4000/selects", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        classId,
-        user,
+        _id,
+        className,
+        classImage,
+        price,
+        availableSeats,
+        instructorName,
       }),
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data.success) {
+        if (data.insertedId) {
+          refetch();
           alert("Course selected successfully!");
           // Handle any additional logic after successful course selection
         } else {
@@ -113,7 +147,7 @@ const Classes = () => {
                 user?.role === "admin" ||
                 user?.role === "instructor"
               }
-              onClick={() => handleSelectClass(classData._id)}
+              onClick={() => handleSelectClass(classData)}
             >
               {user?.role === "admin"
                 ? "Logged in as Admin"
