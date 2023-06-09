@@ -54,11 +54,12 @@ const Countdown = () => {
     <div
       className="flex flex-col items-center justify-center h-screen bg-cover bg-fixed"
       style={{
+        height: "500px",
         backgroundImage:
           "url(https://images.pexels.com/photos/2057274/pexels-photo-2057274.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)",
       }}
     >
-      <h1 className="text-4xl font-bold text-black bg-gray-400 p-6 bg-opacity-50">
+      <h1 className="text-4xl font-bold text-black bg-gray-200 p-6 bg-opacity-70">
         Our Next Class Starts In:
       </h1>
       <div className="flex mt-4   bg-gray-900 p-9 bg-opacity-70">

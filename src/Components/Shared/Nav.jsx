@@ -6,8 +6,6 @@ import { FaSign, FaSignInAlt } from "react-icons/fa";
 
 const Nav = () => {
   const { user, logOut } = useAuth();
-  const [navbarBgColor, setNavbarBgColor] = useState("bg-transparent");
-  const [navbarPosition, setNavbarPosition] = useState("static");
 
   const handleLogOut = () => {
     logOut()
@@ -15,40 +13,20 @@ const Nav = () => {
       .catch((error) => console.log(error));
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setNavbarBgColor("bg-red-200");
-        setNavbarPosition("fixed");
-      } else {
-        setNavbarBgColor("bg-transparent");
-        setNavbarPosition("static");
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
     <div>
-      <Navbar
-        fluid
-        rounded
-        className={`transition-colors duration-500 ${navbarBgColor}`}
-        style={{ position: navbarPosition }}
-      >
+      <Navbar fluid rounded className="">
         <Navbar.Brand href="/">
           <img
             alt="Logo"
             className="mr-3 h-20 sm:h-28"
             src="https://i.ibb.co/PwPjsVY/AK-removebg-preview.png"
           />
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            Dance Studio
+          <span
+            style={{ fontFamily: "Lemon, sans-serif" }}
+            className="self-center whitespace-nowrap  text-amber-900 text-xl font-semibold dark:text-white"
+          >
+            Dance <span className="text-gray-500">Studio</span>
           </span>
         </Navbar.Brand>
         <div className="flex md:order-2">
