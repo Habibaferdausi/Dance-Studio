@@ -70,7 +70,12 @@ const Classes = () => {
       return;
     }
     if (selectedClasses.includes(classData._id)) {
-      alert("You have already selected this class.");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "You have already selected this class.",
+      });
+
       return;
     }
 
@@ -78,21 +83,27 @@ const Classes = () => {
 
     axiosHook
       .post("http://localhost:4000/selects", {
-        _id,
+        classId: _id,
         className,
         classImage,
         price,
         availableSeats,
         instructorName,
+        email: user?.email,
       })
       .then((response) => {
         const data = response.data;
         if (data.insertedId) {
-          refetch();
-          alert("Course selected successfully!");
-          // Handle any additional logic after successful course selection
+          Swal.fire({
+            icon: "success",
+            title: "Yess...",
+            text: "Successfully Added.",
+          });
         } else {
-          alert("Failed to select course: ");
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+          });
         }
       })
       .catch((err) => {

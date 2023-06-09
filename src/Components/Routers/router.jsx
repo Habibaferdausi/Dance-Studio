@@ -13,6 +13,7 @@ import AdminManage from "../DashBoard Page/AdminManage";
 import Classes from "../Pages/Classes";
 import InstructorsPage from "../Pages/InstructorsPage";
 import DashboardHome from "../DashBoard Page/DashboardHome";
+import SelectedClasses from "../DashBoard Page/Student Dashboard/SelectedClasses";
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
         path: "manageClass",
         element: <AdminManage></AdminManage>,
       },
+      {path:"selectedClass",
+    element:<SelectedClasses></SelectedClasses>
+    },
+
     ],
   },
 ]);
