@@ -3,20 +3,19 @@ import axios from "axios";
 import useAuth from "../Hooks/useAuth";
 import SideNav from "../DashBoard Page/SideNav";
 import { Outlet } from "react-router-dom";
+import useAxios from "../Hooks/useAxios";
 
-const useUserRole = (user) => {
+export const useUserRole = (user) => {
   const [userRole, setUserRole] = useState("");
+  const [axiosHook] = useAxios();
 
   useEffect(() => {
-    // Make the API request to get the user's role
     const fetchUserRole = async () => {
       try {
-        const adminResponse = await axios.get(
-          "http://localhost:4000/users/admin/:email"
-        ); // Replace with the actual API endpoint for admin role
-        const instructorResponse = await axios.get(
-          "http://localhost:4000/users/instructor/:email"
-        ); // Replace with the actual API endpoint for instructor role
+        const adminResponse = await axiosHook.get("/users/admin/:email");
+        const instructorResponse = await axiosHook.get(
+          "/users/instructor/:email"
+        );
         const { email: adminEmail } = adminResponse.data;
         const { email: instructorEmail } = instructorResponse.data;
 
@@ -32,7 +31,6 @@ const useUserRole = (user) => {
       }
     };
 
-    // Call the fetchUserRole function
     fetchUserRole();
   }, [user]);
 

@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAxios from "../Hooks/useAxios";
+import { useUserRole } from "../Layout/Dashboard";
 
 const Classes = () => {
   const [classes, setClasses] = useState([]);
@@ -18,6 +19,11 @@ const Classes = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [axiosHook] = useAxios();
+
+  const userRole = useUserRole(user);
+  console.log(userRole);
+
+  const [selectedClasses, setSelectedClasses] = useState([]);
 
   axiosHook
     .get("/filterClasses")
@@ -29,6 +35,7 @@ const Classes = () => {
       console.error("Error retrieving classes:", err);
       setClasses([]);
     });
+
   const handleSelectClass = (classData) => {
     const {
       _id,
@@ -38,7 +45,6 @@ const Classes = () => {
       availableSeats,
       instructorName,
     } = classData;
-    console.log(classData);
 
     if (!user) {
       Swal.fire({
@@ -55,34 +61,38 @@ const Classes = () => {
       });
       return;
     }
-
-    if (user?.role === "admin" || user?.role === "instructor") {
-      alert("You are not allowed to select this course.");
+    if (userRole === "admin" || userRole === "instructor") {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "As a Admin/ Instructor You Can't Select a Class",
+      });
+      return;
+    }
+    if (selectedClasses.includes(classData._id)) {
+      alert("You have already selected this class.");
       return;
     }
 
-    fetch("http://localhost:4000/selects", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+    setSelectedClasses([...selectedClasses, classData._id]);
+
+    axiosHook
+      .post("http://localhost:4000/selects", {
         _id,
         className,
         classImage,
         price,
         availableSeats,
         instructorName,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
+      })
+      .then((response) => {
+        const data = response.data;
         if (data.insertedId) {
           refetch();
           alert("Course selected successfully!");
           // Handle any additional logic after successful course selection
         } else {
-          alert("Failed to select course: " + data.error);
+          alert("Failed to select course: ");
         }
       })
       .catch((err) => {
@@ -144,15 +154,14 @@ const Classes = () => {
               className="text-white text-lg font-semibold bg-yellow-800 p-2 mt-4"
               disabled={
                 classData?.availableSeats === "0" ||
-                user?.role === "admin" ||
-                user?.role === "instructor"
+                (user &&
+                  (user.role === "admin" || user.role === "instructor")) ||
+                !user
               }
               onClick={() => handleSelectClass(classData)}
             >
-              {user?.role === "admin"
-                ? "Logged in as Admin"
-                : user?.role === "instructor"
-                ? "Logged in as Instructor"
+              {user && (user.role === "admin" || user.role === "instructor")
+                ? "Logged in as Admin/Instructor"
                 : "Select"}
             </button>
           </Card>
