@@ -22,6 +22,9 @@
         const themeToggle = document.getElementById("themeToggle");
         const htmlTag = document.getElementsByTagName("html")[0];
 
+        // Set the initial theme to "dark"
+        htmlTag.setAttribute("data-theme", "dark");
+
         themeToggle.addEventListener("change", () => {
           if (themeToggle.checked) {
             htmlTag.setAttribute("data-theme", "dark");
