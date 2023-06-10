@@ -14,7 +14,7 @@ const Available = () => {
       <div className="  bg-transparent   bg-opacity-40">
         <div className="bg-amber-700 bg-opacity-20  m-20 ">
           {" "}
-          <h5 className="mb-2 text-3xl font-bold text-center mt-10 pt-10  text-gray-200 dark:text-white">
+          <h5 className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">
             Contact fast from anywhere
           </h5>
           <p className="mb-5 lg:text-base text-gray-200 mt-8 text-center dark:text-gray-200 text-lg">

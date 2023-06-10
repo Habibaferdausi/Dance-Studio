@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import { FaSign, FaSignInAlt } from "react-icons/fa";
+import ToggleButton from "./ToggleButton ";
 
 const Nav = () => {
   const { user, logOut } = useAuth();
@@ -45,7 +46,10 @@ const Nav = () => {
               </Dropdown.Header>
               <Dropdown.Divider />
               <Dropdown.Item>
-                <button onClick={handleLogOut} className="btn btn-ghost">
+                <button
+                  onClick={handleLogOut}
+                  className="btn btn-ghost bg-purple-300  dark:text-black"
+                >
                   LogOut
                 </button>
               </Dropdown.Item>
@@ -61,6 +65,7 @@ const Nav = () => {
             </Navbar.Collapse>
           )}
           <Navbar.Toggle />
+          <ToggleButton></ToggleButton>
         </div>
         <Navbar.Collapse>
           <Link to="/">Home</Link>

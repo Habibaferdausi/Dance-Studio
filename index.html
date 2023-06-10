@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
@@ -11,8 +11,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dance Studio</title>
   </head>
+
   <body>
-    <div id="root"></div>
+    <div id="root" className="bg-slate-100 dark:bg-gray-800"></div>
+
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // Wait for the DOM to load before accessing elements
+      document.addEventListener("DOMContentLoaded", () => {
+        const themeToggle = document.getElementById("themeToggle");
+        const htmlTag = document.getElementsByTagName("html")[0];
+
+        themeToggle.addEventListener("change", () => {
+          if (themeToggle.checked) {
+            htmlTag.setAttribute("data-theme", "dark");
+          } else {
+            htmlTag.setAttribute("data-theme", "light");
+          }
+        });
+      });
+    </script>
   </body>
 </html>
