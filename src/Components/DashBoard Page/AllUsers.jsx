@@ -49,18 +49,18 @@ const AllUsers = () => {
   const handleDelete = (user) => {};
 
   return (
-    <div className="w-full">
-      <h1 className="text-3xl font-bold mt-10 text-amber-800 text-center">
+    <div className="w-full bg-slate-50 dark:bg-slate-600">
+      <h1 className="text-3xl font-bold pt-10 text-amber-800 text-center dark:text-white">
         Welcome To Manage Users
       </h1>
-      <h3 className="text-xl text-center mb-10 font-semibold mt-4">
+      <h3 className="text-xl text-center mb-10 font-semibold mt-4 dark:text-purple-300">
         Total Users: {users.length}
       </h3>
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">
           {/* head */}
-          <thead className="text-center p-2 text-amber-800 bg-gray-200 ">
-            <tr>
+          <thead className="text-center p-2 text-amber-800 dark:text-gray-100 bg-gray-200  dark:bg-slate-400">
+            <tr className="bg-gray-100 dark:bg-slate-600">
               <th></th>
               <th>Name</th>
               <th>Email</th>
@@ -70,9 +70,9 @@ const AllUsers = () => {
               <th>Action</th>
             </tr>
           </thead>
-          <tbody className="text-center font-semibold text-gray-800">
+          <tbody className="text-center font-semibold text-gray-800 dark:text-gray-100">
             {users.map((user, index) => (
-              <tr key={user._id}>
+              <tr key={user._id} className=" bg-purple-100 ">
                 <th>{index + 1}</th>
                 <td>{user.name}</td>
                 <td>{user.email}</td>

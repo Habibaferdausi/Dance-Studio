@@ -28,15 +28,19 @@ const AddClassForm = () => {
             availableSeats,
             price,
             status,
+            totalEnrolledStudents,
+            feedback,
           } = data;
           const newClass = {
             className,
             classImage: imgURL,
             instructorName: user?.displayName,
             instructorEmail: user?.email,
-            availableSeats: parseFloat(availableSeats),
+            availableSeats: parseInt(availableSeats), // Parse as an integer
             price: parseFloat(price),
             status: "pending",
+            totalEnrolledStudents: 0,
+            feedback: "", // Set the initial value to zero
           };
 
           // Make an API call to your backend server to save the new class
@@ -65,96 +69,116 @@ const AddClassForm = () => {
         }
       });
   };
+
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Add a Class</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 font-bold mb-2"
-            htmlFor="className"
-          >
-            Class name
-          </label>
-          <input
-            className="w-full p-2 border border-gray-300 rounded"
-            type="text"
-            id="className"
-            {...register("className", { required: true })}
+    <div className="bg-white dark:bg-slate-600 py-10">
+      <div className="bg-white dark:bg-slate-600 py-10 grid grid-cols-1 lg:grid-cols-2">
+        <div className="max-w-md mx-auto p-6 bg-white rounded shadow-md">
+          <h2 className="font-bold  text-blue-500 dark:text-white text-center mb-6 text-3xl">
+            Add a Class
+          </h2>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="mb-4">
+              <label
+                className="block text-gray-700 font-bold mb-2"
+                htmlFor="className"
+              >
+                Class name
+              </label>
+              <input
+                className="w-full p-2 border border-gray-300 rounded"
+                type="text"
+                id="className"
+                {...register("className", { required: true })}
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                className="block text-gray-700 font-bold mb-2"
+                htmlFor="className"
+              >
+                Class Image
+              </label>
+              <input
+                type="file"
+                {...register("image", { required: true })}
+                className="file-input file-input-bordered w-full bg-slate-50 dark:bg-slate-600 "
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                className="block text-gray-700 font-bold mb-2"
+                htmlFor="instructorName"
+              >
+                Instructor name
+              </label>
+              <input
+                className="w-full p-2 bg-gray-100 border border-gray-300 rounded"
+                type="text"
+                id="instructorName"
+                value={user?.displayName}
+                readOnly
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                className="block text-gray-700 font-bold mb-2"
+                htmlFor="instructorEmail"
+              >
+                Instructor email
+              </label>
+              <input
+                className="w-full p-2 bg-gray-100 border border-gray-300 rounded"
+                type="text"
+                id="instructorEmail"
+                value={user?.email}
+                readOnly
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                className="block text-gray-700 font-bold mb-2"
+                htmlFor="availableSeats"
+              >
+                Available seats
+              </label>
+              <input
+                className="w-full p-2 border border-gray-300 rounded"
+                type="number"
+                id="availableSeats"
+                {...register("availableSeats", { required: true })}
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                className="block text-gray-700 font-bold mb-2"
+                htmlFor="price"
+              >
+                Price
+              </label>
+              <input
+                className="w-full p-2 border border-gray-300 rounded"
+                type="number"
+                id="price"
+                {...register("price", { required: true })}
+              />
+            </div>
+            <button
+              className="w-full bg-yellow-800 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded"
+              type="submit"
+            >
+              Add Class
+            </button>
+          </form>
+        </div>
+        <div>
+          <img
+            src="https://media.tenor.com/r02lM1gGhdcAAAAd/upload-videos.gif"
+            alt=""
+            srcset=""
           />
         </div>
-        <div className="mb-4">
-          <label className="label block text-gray-700 font-bold mb-2">
-            <span className="label-text">Class Image</span>
-          </label>
-          <input
-            type="file"
-            {...register("image", { required: true })}
-            className="file-input file-input-bordered w-full "
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 font-bold mb-2"
-            htmlFor="instructorName"
-          >
-            Instructor name
-          </label>
-          <input
-            className="w-full p-2 bg-gray-100 border border-gray-300 rounded"
-            type="text"
-            id="instructorName"
-            value={user?.displayName}
-            readOnly
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 font-bold mb-2"
-            htmlFor="instructorEmail"
-          >
-            Instructor email
-          </label>
-          <input
-            className="w-full p-2 bg-gray-100 border border-gray-300 rounded"
-            type="text"
-            id="instructorEmail"
-            value={user?.email}
-            readOnly
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 font-bold mb-2"
-            htmlFor="availableSeats"
-          >
-            Available seats
-          </label>
-          <input
-            className="w-full p-2 border border-gray-300 rounded"
-            type="number"
-            id="availableSeats"
-            {...register("availableSeats", { required: true })}
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2" htmlFor="price">
-            Price
-          </label>
-          <input
-            className="w-full p-2 border border-gray-300 rounded"
-            type="number"
-            id="price"
-            {...register("price", { required: true })}
-          />
-        </div>
-        <button
-          className="w-full bg-yellow-800 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded"
-          type="submit"
-        >
-          Add Class
-        </button>
-      </form>
+      </div>
     </div>
   );
 };
