@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
@@ -18,21 +18,24 @@
     <script type="module" src="/src/main.jsx"></script>
     <script>
       // Wait for the DOM to load before accessing elements
-      document.addEventListener("DOMContentLoaded", () => {
-        const themeToggle = document.getElementById("themeToggle");
-        const htmlTag = document.getElementsByTagName("html")[0];
+      // document.addEventListener("DOMContentLoaded", () => {
+      //   const themeToggle = document.getElementById("themeToggle");
+      //   const htmlTag = document.getElementsByTagName("html")[0];
 
-        // Set the initial theme to "dark"
-        htmlTag.setAttribute("data-theme", "dark");
+      //   // Set the initial theme to "dark"
+      //   htmlTag.setAttribute("data-theme", "dark");
 
-        themeToggle.addEventListener("change", () => {
-          if (themeToggle.checked) {
-            htmlTag.setAttribute("data-theme", "dark");
-          } else {
-            htmlTag.setAttribute("data-theme", "light");
-          }
-        });
-      });
+      //   themeToggle.addEventListener("change", () => {
+      //     // Code to be executed when the "change" event occurs
+      //     if (themeToggle.checked) {
+      //       // Apply dark theme
+      //       document.body.classList.add("dark-theme");
+      //     } else {
+      //       // Apply light theme
+      //       document.body.classList.remove("dark-theme");
+      //     }
+      //   });
+      // });
     </script>
   </body>
 </html>

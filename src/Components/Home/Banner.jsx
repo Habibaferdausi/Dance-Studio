@@ -11,10 +11,10 @@ const contentStyle = {
 };
 
 const images = [
-  "url('https://i.ibb.co/FwbNwHy/Pngtree-dancing-purple-hand-drawn-banner-1063674.jpg')",
-  "url('https://i.ibb.co/hLK5VLd/Free-HD-Dance-Wallpapers.jpg')",
-  "url('https://img.freepik.com/free-photo/dance-time-stylish-men-woman-dancing-hip-hop-bright-clothes-green-background-dance-hall-neon-light_155003-16406.jpg?w=740&t=st=1686136833~exp=1686137433~hmac=0c2666a65688312709905f24e3038a2890cad00dac7ac07735aad042b2231d4b')",
-  "url('https://as2.ftcdn.net/v2/jpg/04/57/10/55/1000_F_457105571_3mWGRkjsFJT6SOOxu5W1dZUFda4hNtuC.jpg')",
+  "url('https://images.unsplash.com/photo-1621976498727-9e5d56476276?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80')",
+  "url('https://images.unsplash.com/photo-1605799548695-ad63992724cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80')",
+  "url('https://images.unsplash.com/photo-1537365587684-f490102e1225?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=871&q=80')",
+  "url('https://images.unsplash.com/photo-1474308371634-c715850e8d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80')",
 ];
 
 const Banner = () => (
@@ -24,21 +24,21 @@ const Banner = () => (
         style={{ ...contentStyle, backgroundImage: images[0] }}
         className="text-start text-bold  "
       >
-        <div className="w-1/2 pt-10 lg:pt-11 flex justify-center items-center flex-col ">
-          <h3 className="text-2xl lg:text-4xl">Came Join Our </h3>
+        <div className=" pt-10 lg:pt-20  mx-4 lg:mx-20 l flex justify-center items-center flex-col ">
+          <h3 className="text-2xl pt-11 lg:text-4xl">Came Join Our </h3>
           <h1
             className="text-3xl lg:text-6xl "
             style={{ fontFamily: "Lemon, sans-serif" }}
           >
             Dance Studio
           </h1>
-          <p className="text-lg lg:text-xl text-gray-200 mx-auto mt-7 lg:mt-11">
+          <p className="text-lg w-1/2 lg:text-xl text-gray-200 mx-auto mt-7 lg:mt-11">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi vero,
             voluptatem officiis dolorem nemo reiciendis dolorum alias dicta.
             Soluta cumque molestiae eaque? Sapiente quis facilis quidem officia
             eligendi doloribus aperiam.
           </p>
-          <button className="btn btn-primary p-3  mt-10 text-lg rounded bg-amber-950 text-white ">
+          <button className="btn btn-primary px-3  mt-10 text-lg rounded text-white ">
             See More
           </button>
         </div>
@@ -47,10 +47,10 @@ const Banner = () => (
     <div>
       <div
         style={{ ...contentStyle, backgroundImage: images[1] }}
-        className="  text-end"
+        className="  "
       >
-        <div className="w-1/2 pt-10 lg:pt-11 flex justify-end items-center flex-col  text-end ">
-          <h3 className="text-2xl lg:text-4xl">Came Join Our </h3>
+        <div className="w-1/2 lg:pt-11 flex justify-end items-center flex-col text-end  mx-4 lg:mx-20">
+          <h3 className="text-2xl lg:text-4xl mt-20  ">Came Join Our </h3>
           <h1
             className="text-3xl lg:text-6xl "
             style={{ fontFamily: "Lemon, sans-serif" }}
@@ -63,20 +63,60 @@ const Banner = () => (
             Soluta cumque molestiae eaque? Sapiente quis facilis quidem officia
             eligendi doloribus aperiam.
           </p>
-          <button className="btn btn-primary p-3  mt-10 text-lg rounded bg-amber-950 text-white ">
+          <button className="btn btn-primary px-3  mt-10 text-lg rounded text-white ">
             See More
           </button>
         </div>
       </div>
     </div>
     <div>
-      <div style={{ ...contentStyle, backgroundImage: images[2] }}>
-        <h3>3</h3>
+      <div
+        style={{ ...contentStyle, backgroundImage: images[2] }}
+        className="text-start text-bold  "
+      >
+        <div className=" pt-10 lg:pt-20  mx-4 lg:mx-20 l flex justify-center items-center flex-col ">
+          <h3 className="text-2xl pt-11 lg:text-4xl">Came Join Our </h3>
+          <h1
+            className="text-3xl lg:text-6xl "
+            style={{ fontFamily: "Lemon, sans-serif" }}
+          >
+            Dance Studio
+          </h1>
+          <p className="text-lg w-1/2 lg:text-xl text-gray-200 mx-auto mt-7 lg:mt-11">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi vero,
+            voluptatem officiis dolorem nemo reiciendis dolorum alias dicta.
+            Soluta cumque molestiae eaque? Sapiente quis facilis quidem officia
+            eligendi doloribus aperiam.
+          </p>
+          <button className="btn btn-primary px-3  mt-10 text-lg rounded text-white ">
+            See More
+          </button>
+        </div>
       </div>
     </div>
     <div>
-      <div style={{ ...contentStyle, backgroundImage: images[3] }}>
-        <h3>4</h3>
+      <div
+        style={{ ...contentStyle, backgroundImage: images[3] }}
+        className="  "
+      >
+        <div className="w-1/2 lg:pt-11 flex justify-end items-center flex-col text-end  mx-4 lg:mx-20">
+          <h3 className="text-2xl lg:text-4xl mt-20  ">Came Join Our </h3>
+          <h1
+            className="text-3xl lg:text-6xl "
+            style={{ fontFamily: "Lemon, sans-serif" }}
+          >
+            Dance Studio
+          </h1>
+          <p className="text-lg lg:text-xl text-gray-200 mx-auto mt-7 lg:mt-11">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi vero,
+            voluptatem officiis dolorem nemo reiciendis dolorum alias dicta.
+            Soluta cumque molestiae eaque? Sapiente quis facilis quidem officia
+            eligendi doloribus aperiam.
+          </p>
+          <button className="btn btn-primary px-3  mt-10 text-lg rounded text-white ">
+            See More
+          </button>
+        </div>
       </div>
     </div>
   </Carousel>

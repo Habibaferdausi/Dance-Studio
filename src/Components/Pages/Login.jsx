@@ -14,7 +14,7 @@ const Login = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    signIn(email, password)
+    signIn(data.email, data.password)
       .then((result) => {
         const user = result.user;
         console.log(user);
@@ -46,7 +46,7 @@ const Login = () => {
         photoURL: loggedInUser.photoURL,
       };
 
-      fetch("http://localhost:4000/user", {
+      fetch("http://localhost:4000/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import useAxios from "../../Hooks/useAxios";
 import useAuth from "../../Hooks/useAuth";
 
@@ -19,7 +20,6 @@ const SelectedClasses = () => {
 
     fetchSelectedCourse();
   }, []);
-  console.log(selectedCourse);
 
   return (
     <div>
@@ -38,7 +38,15 @@ const SelectedClasses = () => {
               <h2 className="text-xl font-bold mb-2">{course?.className}</h2>
               <p className="mb-2">Class ID: {course?.classId}</p>
               <p className="mb-2">Price: {course?.price}</p>
-              {/* Add additional fields you want to display */}
+              <div className="flex justify-between">
+                <button className="btn btn-danger">Delete</button>
+                <Link
+                  to={`/dashboard/payment/${course?.classId}`}
+                  className="btn btn-success"
+                >
+                  Pay
+                </Link>
+              </div>
             </div>
           </div>
         ))}

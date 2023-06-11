@@ -24,6 +24,7 @@ const ClassesList = ({ classes }) => {
           <p className="text-gray-700 mt-2">
             Total Enrolled Students: {classItem.totalEnrolledStudents}
           </p>
+          <p className="text-gray-700">Feedback: {classItem?.feedback}</p>
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4">
             Update
           </button>

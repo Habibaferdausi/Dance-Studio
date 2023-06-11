@@ -65,7 +65,7 @@ const Nav = () => {
             </Navbar.Collapse>
           )}
           <Navbar.Toggle />
-          <ToggleButton></ToggleButton>
+          {/* <ToggleButton></ToggleButton> */}
         </div>
         <Navbar.Collapse>
           <Link to="/">Home</Link>

@@ -44,6 +44,7 @@ const Classes = () => {
       price,
       availableSeats,
       instructorName,
+      instructorEmail,
     } = classData;
 
     if (!user) {
@@ -89,6 +90,7 @@ const Classes = () => {
         price,
         availableSeats,
         instructorName,
+        instructorEmail,
         email: user?.email,
       })
       .then((response) => {
@@ -96,7 +98,7 @@ const Classes = () => {
         if (data.insertedId) {
           Swal.fire({
             icon: "success",
-            title: "Yess...",
+            title: "Added..",
             text: "Successfully Added.",
           });
         } else {

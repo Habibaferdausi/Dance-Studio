@@ -14,6 +14,7 @@ import Classes from "../Pages/Classes";
 import InstructorsPage from "../Pages/InstructorsPage";
 import DashboardHome from "../DashBoard Page/DashboardHome";
 import SelectedClasses from "../DashBoard Page/Student Dashboard/SelectedClasses";
+import Payments from "../DashBoard Page/Student Dashboard/Payments";
 
 const router = createBrowserRouter([
   {
@@ -66,10 +67,13 @@ const router = createBrowserRouter([
         path: "manageClass",
         element: <AdminManage></AdminManage>,
       },
-      {path:"selectedClass",
-    element:<SelectedClasses></SelectedClasses>
-    },
-
+      { path: "selectedClass", element: <SelectedClasses></SelectedClasses> },
+      {
+        path: "payment/:id",
+        element: <Payments></Payments>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:4000/selects/${params.email}`),
+      },
     ],
   },
 ]);

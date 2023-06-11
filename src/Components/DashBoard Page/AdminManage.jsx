@@ -26,34 +26,38 @@ const AdminManage = () => {
     () => [
       {
         Header: "Class Image",
-        accessor: "classImage", // Replace with the actual accessor for class image
+        accessor: "classImage",
         Cell: ({ value }) => (
           <img src={value} alt="Class" className="w-16 h-16" />
-        ), // Display the image using an img tag
+        ),
       },
       {
         Header: "Class Name",
-        accessor: "className", // Replace with the actual accessor for class name
+        accessor: "className",
       },
       {
         Header: "Instructor Name",
-        accessor: "instructorName", // Replace with the actual accessor for instructor name
+        accessor: "instructorName",
       },
       {
         Header: "Instructor Email",
-        accessor: "instructorEmail", // Replace with the actual accessor for instructor email
+        accessor: "instructorEmail",
       },
       {
         Header: "Available Seats",
-        accessor: "availableSeats", // Replace with the actual accessor for available seats
+        accessor: "availableSeats",
       },
       {
         Header: "Price",
-        accessor: "price", // Replace with the actual accessor for price
+        accessor: "price",
+      },
+      {
+        Header: "Feedback",
+        accessor: "feedback",
       },
       {
         Header: "Status",
-        accessor: "status", // Replace with the actual accessor for status
+        accessor: "status",
       },
       {
         Header: "Actions",
@@ -92,19 +96,16 @@ const AdminManage = () => {
 
   const handleApprove = async (row) => {
     try {
-      // Perform the API patch request to update the status to 'approved'
       await axiosHook.patch(`/classes/${row.original._id}`, {
         status: "approved",
       });
 
-      // Create a new array with updated data
       const updatedData = data.map((item) =>
         item._id === row.original._id
           ? { ...item, status: "approved", buttonsDisabled: true }
           : item
       );
 
-      // Update the state with the new array
       setData(updatedData);
     } catch (error) {
       console.error("Error approving class:", error);
@@ -113,27 +114,44 @@ const AdminManage = () => {
 
   const handleDeny = async (row) => {
     try {
-      // Perform the API patch request to update the status to 'denied'
       await axiosHook.patch(`/classes/${row.original._id}`, {
         status: "denied",
       });
 
-      // Create a new array with updated data
       const updatedData = data.map((item) =>
         item._id === row.original._id
           ? { ...item, status: "denied", buttonsDisabled: true }
           : item
       );
 
-      // Update the state with the new array
       setData(updatedData);
     } catch (error) {
       console.error("Error denying class:", error);
     }
   };
 
-  const handleSendFeedback = (row) => {
-    // Open a modal or navigate to another route to send feedback
+  const handleSendFeedback = async (row) => {
+    try {
+      const adminFeedback = prompt("Enter feedback:");
+
+      if (!adminFeedback) {
+        return;
+      }
+
+      await axiosHook.patch(`/classes/${row.original._id}`, {
+        feedback: adminFeedback, // Use the adminFeedback variable as the feedback value
+      });
+
+      const updatedData = data.map((item) =>
+        item._id === row.original._id
+          ? { ...item, feedback: adminFeedback, buttonsDisabled: false }
+          : item
+      );
+
+      setData(updatedData);
+    } catch (error) {
+      console.error("Error sending feedback:", error);
+    }
   };
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =

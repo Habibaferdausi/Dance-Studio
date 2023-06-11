@@ -12,27 +12,37 @@ export const useUserRole = (user) => {
   useEffect(() => {
     const fetchUserRole = async () => {
       try {
-        const adminResponse = await axiosHook.get("/users/admin/:email");
-        const instructorResponse = await axiosHook.get(
-          "/users/instructor/:email"
-        );
-        const { email: adminEmail } = adminResponse.data;
-        const { email: instructorEmail } = instructorResponse.data;
+        const response = await axiosHook.get(`/users/role/${user?.email}`);
+        console.log("Response:", response.data);
 
-        if (adminEmail === user?.email) {
+        const { admin, instructor } = response.data;
+
+        if (admin) {
           setUserRole("admin");
-        } else if (instructorEmail === user?.email) {
+        } else if (instructor) {
           setUserRole("instructor");
         } else {
-          setUserRole("user");
+          // Fetch the user role from the database directly
+          const usersResponse = await axiosHook.get("/users");
+          const users = usersResponse.data;
+
+          const userRole = users.find((u) => u.email === user?.email)?.role;
+
+          if (userRole) {
+            setUserRole(userRole);
+          } else {
+            setUserRole("unknown");
+          }
         }
       } catch (error) {
-        console.log(error);
+        console.error("Error:", error);
       }
     };
 
-    fetchUserRole();
-  }, [user]);
+    if (user) {
+      fetchUserRole();
+    }
+  }, [user, axiosHook]);
 
   return userRole;
 };

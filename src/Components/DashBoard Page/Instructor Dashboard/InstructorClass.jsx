@@ -12,6 +12,7 @@ const InstructorClass = () => {
       setClasses(response.data);
     });
   }, []);
+  console.log(classes);
   return (
     <div>
       <h1 className="text-2xl font-bold mb-4">My Classes</h1>
