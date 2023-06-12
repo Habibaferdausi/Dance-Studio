@@ -11,6 +11,10 @@ Dance Studio is a Full Stack website. User can see the classes, instructors , ma
 - Instructor can Upload Classes
 - Admin can Approve or deny Class.
 
+## Technology
+
+-ReactJs , React Router Dom , Tailwind DeisyUi , Flowbit ,Fort Awesome ,stripe-js, tanstack/react-query, axios , firebase , react-awesome-reveal, react-hook-form ,react-icons , react-loader-spinner,react-spring ,react-table, MongoDb , Nodejs , ExpressJs, vercel.
+
 ## 🔗 Link
 
 [Dance Studio](https://dance-studio1.web.app)
