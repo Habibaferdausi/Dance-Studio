@@ -31,18 +31,22 @@ const features = [
 const WhyChooseUs = () => {
   return (
     <section className="bg-gray-100 py-12 dark:bg-gray-700">
-      <div className="container mx-auto px-4 dark:text-white">
-        <h2 className="text-3xl font-bold text-center mb-8">Why Choose Us</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="container mx-auto px-4 text-purple-600">
+        <h2 className="text-3xl  dark:text-white font-bold text-center mb-8">
+          Why Choose Us
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 dark:bg-gray-800">
           {features.map((feature, index) => (
             <Fade direction="up" key={index} delay={index * 100}>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-gray-100  dark:bg-gray-700 p-6 rounded-lg shadow-md">
                 <div className="flex items-center mb-4">
                   <FontAwesomeIcon
                     icon={feature.icon}
                     className="text-green-500 dark:text-green-200 mr-2 text-3xl"
                   />
-                  <h3 className="text-xl font-semibold">{feature.title}</h3>
+                  <h3 className="text-xl text-purple-500 dark:text-white font-semibold">
+                    {feature.title}
+                  </h3>
                 </div>
                 <p className="text-gray-700 dark:text-white">
                   {feature.description}
