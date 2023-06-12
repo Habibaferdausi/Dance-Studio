@@ -6,17 +6,22 @@ import NewsLetterPage from "./NewsLetterPage";
 import ChoosePlan from "./ChoosePlan";
 import WhyChooseUs from "./WHyChooseUs";
 import Passion from "./Passion";
+import Classes from "../Pages/Classes";
+import InstructorsPage from "../Pages/InstructorsPage";
 
 const Home = () => {
   return (
-    <div>
+    <div className="mx-auto">
       <Banner></Banner>
       <WhyChooseUs></WhyChooseUs>
-      <Passion></Passion>
-      <Countdown></Countdown>
+      <div className="my-20">
+        <Classes></Classes>
+      </div>
+
       <ChoosePlan></ChoosePlan>
+      <Countdown></Countdown>
+      <InstructorsPage></InstructorsPage>
       <Available></Available>
-      <NewsLetterPage></NewsLetterPage>
     </div>
   );
 };

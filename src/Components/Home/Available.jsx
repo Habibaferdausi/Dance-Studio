@@ -17,32 +17,17 @@ const Available = () => {
         <h2 className="text-3xl font-bold text-center mb-8 text-white">
           Available on App Stores
         </h2>
-        <div className="flex justify-center items-center">
-          <a
-            href="https://www.apple.com/app-store/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mr-4"
-          >
-            <div className="bg-white rounded-lg p-4">
-              <FontAwesomeIcon
-                icon={faApple}
-                className="text-4xl text-purple-800 hover:text-white transition-colors duration-300"
-              />
-            </div>
-          </a>
-          <a
-            href="https://play.google.com/store"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div className="bg-white rounded-lg p-4">
-              <FontAwesomeIcon
-                icon={faGooglePlay}
-                className="text-4xl text-purple-800 hover:text-white transition-colors duration-300"
-              />
-            </div>
-          </a>
+        <div className="lg:flex gap-9 mb-7  justify-center items-center">
+          <img
+            src="https://i.ibb.co/MkmQXDh/google-play-logo.webp"
+            className="h-20"
+            alt=""
+          />
+          <img
+            src="https://i.ibb.co/ZGcWdzw/apple-app-store-logo.jpg"
+            className="h-20"
+            alt=""
+          />
         </div>
       </div>
     </section>

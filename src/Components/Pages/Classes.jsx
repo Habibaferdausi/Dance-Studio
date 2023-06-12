@@ -24,6 +24,7 @@ const Classes = () => {
   console.log(userRole);
 
   const [selectedClasses, setSelectedClasses] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   axiosHook
     .get("/filterClasses")
@@ -34,6 +35,7 @@ const Classes = () => {
     .catch((err) => {
       console.error("Error retrieving classes:", err);
       setClasses([]);
+      setIsLoading(false);
     });
 
   const handleSelectClass = (classData) => {
@@ -79,6 +81,18 @@ const Classes = () => {
 
       return;
     }
+    if (isLoading) {
+      return (
+        <div className="flex justify-center items-center h-screen">
+          <ClipLoader
+            color="#3B82F6"
+            loading={isLoading}
+            css={override}
+            size={50}
+          />
+        </div>
+      ); // Render spinner while data is loading
+    }
 
     setSelectedClasses([...selectedClasses, classData._id]);
 
@@ -115,9 +129,9 @@ const Classes = () => {
   };
 
   return (
-    <div>
-      <h1 className=" text-center my-5 pb-7 text-red-900 text-3xl font-extrabold">
-        Approved Classes
+    <div className="mb-20 mx-auto">
+      <h1 className=" text-center my-5 pb-7 text-gray-200 text-3xl font-extrabold">
+        Our Classes
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-9 mx-12">
         {classes.map((classData) => (
@@ -125,58 +139,61 @@ const Classes = () => {
             key={classData?._id}
             imgAlt={classData?.className}
             imgSrc={classData?.classImage}
-            className={classData?.availableSeats === "0" ? "bg-red-500" : ""}
-            style={{
-              height: "200px",
-            }}
           >
-            <h5 className="text-2xl font-bold text-center bg-red-100 p-3  text-red-900 dark:text-white">
-              {classData?.className}
+            <h5 className="text-2xl font-semibold mb-2 tracking-tight text-gray-900 dark:text-white">
+              <p>{classData?.className}</p>
             </h5>
-            <p className="font-semibold text-lg text-orange-400  dark:text-gray-400">
-              <span className="font-bold  text-gray-700">
-                <FontAwesomeIcon
-                  icon={faChalkboardTeacher}
-                  className="me-2 text-red-400"
-                ></FontAwesomeIcon>
-                Instructor:
-              </span>{" "}
-              {classData?.instructorName}
-            </p>
-            <p className="font-semibold  flex gap-2 text-lg text-blue-700 dark:text-gray-400">
-              <span className="font-bold  text-gray-700 flex gap-2">
-                <FontAwesomeIcon
-                  icon={faUserTimes}
-                  className=" text-blue-800"
-                ></FontAwesomeIcon>{" "}
-                Available Seats :
-              </span>{" "}
-              {classData?.availableSeats}
-            </p>
-            <p className="font-semibold text-lg text-red-700 dark:text-gray-400">
-              <span className="font-bold text-gray-700">
-                <FontAwesomeIcon
-                  icon={faMoneyBills}
-                  className="me-2 text-green-500"
-                ></FontAwesomeIcon>
-                Price:
-              </span>{" "}
-              {classData?.price} $
-            </p>
-            <button
-              className="text-white text-lg font-semibold bg-yellow-800 p-2 mt-4"
-              disabled={
-                classData?.availableSeats === "0" ||
-                (user &&
-                  (user.role === "admin" || user.role === "instructor")) ||
-                !user
-              }
-              onClick={() => handleSelectClass(classData)}
-            >
-              {user && (user.role === "admin" || user.role === "instructor")
-                ? "Logged in as Admin/Instructor"
-                : "Select"}
-            </button>
+
+            <div className="flex items-center mb-3 justify-between">
+              <span className="text-3xl font-bold text-gray-900 dark:text-white">
+                <span className="font-bold text-gray-700">
+                  <FontAwesomeIcon
+                    icon={faMoneyBills}
+                    className="me-2 text-green-500"
+                  ></FontAwesomeIcon>
+                  Price:
+                </span>
+                {classData?.price} $
+              </span>
+            </div>
+            <div>
+              <p className="font-semibold text-lg text-orange-400  dark:text-gray-400">
+                <span className="font-bold  text-gray-700">
+                  <FontAwesomeIcon
+                    icon={faChalkboardTeacher}
+                    className="me-2 mb-2 text-red-400"
+                  ></FontAwesomeIcon>
+                  Instructor:
+                </span>{" "}
+                {classData?.instructorName}
+              </p>
+              <p className="font-semibold  flex gap-2 text-lg text-blue-700 dark:text-gray-400">
+                <span className="font-bold  text-gray-700 flex gap-2">
+                  <FontAwesomeIcon
+                    icon={faUserTimes}
+                    className=" text-blue-800"
+                  ></FontAwesomeIcon>{" "}
+                  Available Seats :
+                </span>{" "}
+                {classData?.availableSeats}
+              </p>
+              <p className="rounded-lg bg-cyan-700 px-5 mt-4 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
+                <button
+                  className="text-white  text-lg font-semibold"
+                  disabled={
+                    classData?.availableSeats === "0" ||
+                    (user &&
+                      (user.role === "admin" || user.role === "instructor")) ||
+                    !user
+                  }
+                  onClick={() => handleSelectClass(classData)}
+                >
+                  {user && (user.role === "admin" || user.role === "instructor")
+                    ? "Logged in as Admin/Instructor"
+                    : "Select"}
+                </button>
+              </p>
+            </div>
           </Card>
         ))}
       </div>

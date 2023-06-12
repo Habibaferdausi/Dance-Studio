@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import useAxios from "../Hooks/useAxios";
 import { Card, Progress } from "flowbite-react";
+
+import { Bars } from "react-loader-spinner";
 import {
   FaFacebook,
   FaPhone,
@@ -32,7 +34,7 @@ const InstructorsPage = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4">Instructors</h1>
+      <h1 className="text-3xl font-bold   mb-5 text-center">Our Instructors</h1>
       {instructors.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-9 mx-12">
           {instructors.map((instructor) => (
@@ -63,12 +65,14 @@ const InstructorsPage = () => {
         </div>
       ) : (
         <p>
-          <Progress
-            labelProgress
-            labelText
-            progress={50}
-            size="lg"
-            textLabel="Loading"
+          <Bars
+            height="80"
+            width="80"
+            color="#4fa94d"
+            ariaLabel="bars-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
           />
         </p>
       )}
