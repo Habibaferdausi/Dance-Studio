@@ -130,7 +130,7 @@ const Classes = () => {
 
   return (
     <div className="mb-20 mx-auto">
-      <h1 className=" text-center my-5 pb-7 text-gray-200 text-3xl font-extrabold">
+      <h1 className=" text-center my-5 pb-7 text-purple-700  text-3xl font-extrabold">
         Our Classes
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-9 mx-12">

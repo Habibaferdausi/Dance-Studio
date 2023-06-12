@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import { FaSign, FaSignInAlt } from "react-icons/fa";
-import ToggleButton from "./ToggleButton ";
 
 const Nav = () => {
   const { user, logOut } = useAuth();
@@ -65,7 +64,6 @@ const Nav = () => {
             </Navbar.Collapse>
           )}
           <Navbar.Toggle />
-          <ToggleButton></ToggleButton>
         </div>
         <Navbar.Collapse>
           <Link to="/">Home</Link>

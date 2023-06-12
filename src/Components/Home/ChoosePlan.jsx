@@ -5,7 +5,7 @@ const ChoosePlan = () => {
   return (
     <div>
       {" "}
-      <h1 className="text-center my-5  font-bold text-2xl text-gray-200">
+      <h1 className="text-center my-5  font-bold text-3xl text-purple-700 ">
         {" "}
         Choose Plan
       </h1>

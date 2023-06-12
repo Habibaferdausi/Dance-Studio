@@ -69,7 +69,7 @@ const AllUsers = () => {
               <th>Role (Instructor)</th>
             </tr>
           </thead>
-          <tbody className="text-center font-semibold text-gray-800 dark:text-gray-100">
+          <tbody className="text-center font-semibold text-purple-800 dark:text-gray-100">
             {users.map((user, index) => (
               <tr key={user._id} className=" bg-purple-100 ">
                 <th>{index + 1}</th>

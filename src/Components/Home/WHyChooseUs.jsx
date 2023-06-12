@@ -32,7 +32,7 @@ const WhyChooseUs = () => {
   return (
     <section className="bg-gray-100 py-12 dark:bg-gray-700">
       <div className="container mx-auto px-4 text-purple-600">
-        <h2 className="text-3xl  dark:text-white font-bold text-center mb-8">
+        <h2 className="text-3xl  dark:text-white text-purple-700 font-bold text-center mb-8">
           Why Choose Us
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 dark:bg-gray-800">
