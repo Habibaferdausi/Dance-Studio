@@ -9,10 +9,10 @@ const userRole = (user) => {
     const fetchUserRole = async () => {
       try {
         const adminResponse = await axios.get(
-          "http://localhost:4000/users/admin/:email"
+          "https://dance-studio-hazel.vercel.app/users/admin/:email"
         ); // Replace with the actual API endpoint for admin role
         const instructorResponse = await axios.get(
-          "http://localhost:4000/users/instructor/:email"
+          "https://dance-studio-hazel.vercel.app/users/instructor/:email"
         ); // Replace with the actual API endpoint for instructor role
         const { email: adminEmail } = adminResponse.data;
         const { email: instructorEmail } = instructorResponse.data;

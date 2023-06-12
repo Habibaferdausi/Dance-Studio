@@ -46,7 +46,7 @@ const Login = () => {
         photoURL: loggedInUser.photoURL,
       };
 
-      fetch("http://localhost:4000/users", {
+      fetch("https://dance-studio-hazel.vercel.app/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

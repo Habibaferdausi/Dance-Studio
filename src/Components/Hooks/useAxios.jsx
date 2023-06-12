@@ -9,7 +9,7 @@ const useAxios = () => {
   const navigate = useNavigate();
 
   const axiosHook = axios.create({
-    baseURL: "http://localhost:4000",
+    baseURL: "https://dance-studio-hazel.vercel.app",
   });
 
   // useEffect(() => {

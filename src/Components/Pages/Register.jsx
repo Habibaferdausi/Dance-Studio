@@ -40,8 +40,7 @@ const Register = () => {
             console.log(err.message);
           });
 
-        // Send data to localhost:4000/user
-        fetch("http://localhost:4000/users", {
+        fetch("https://dance-studio-hazel.vercel.app/users", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -82,7 +81,7 @@ const Register = () => {
         photoURL: loggedInUser.photoURL,
       };
 
-      fetch("http://localhost:4000/users", {
+      fetch("https://dance-studio-hazel.vercel.app/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

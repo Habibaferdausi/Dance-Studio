@@ -97,7 +97,7 @@ const Classes = () => {
     setSelectedClasses([...selectedClasses, classData._id]);
 
     axiosHook
-      .post("http://localhost:4000/selects", {
+      .post("https://dance-studio-hazel.vercel.app/selects", {
         classId: _id,
         className,
         classImage,

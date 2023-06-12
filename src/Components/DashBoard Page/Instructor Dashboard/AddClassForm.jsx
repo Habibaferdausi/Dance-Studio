@@ -48,7 +48,7 @@ const AddClassForm = () => {
             feedback: "",
           };
 
-          fetch("http://localhost:4000/classes", {
+          fetch("https://dance-studio-hazel.vercel.app/classes", {
             method: "POST",
             headers: {
               "content-type": "application/json",

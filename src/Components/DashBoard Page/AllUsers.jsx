@@ -21,7 +21,7 @@ const AllUsers = () => {
   });
 
   const handleMakeRole = (user, role) => {
-    fetch(`http://localhost:4000/users/role/${user._id}`, {
+    fetch(`https://dance-studio-hazel.vercel.app/users/role/${user._id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
