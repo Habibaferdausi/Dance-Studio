@@ -111,7 +111,7 @@ const SideNav = ({ userRole }) => {
               Payment History
             </NavLink>
             <NavLink
-              to=""
+              to="enrolledClass"
               className="flex items-center py-2 px-8 text-gray-400 hover:bg-gray-700 hover:text-white"
               activeClassName="bg-gray-900 text-white"
             >
