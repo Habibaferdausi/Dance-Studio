@@ -15,6 +15,7 @@ import InstructorsPage from "../Pages/InstructorsPage";
 import DashboardHome from "../DashBoard Page/DashboardHome";
 import SelectedClasses from "../DashBoard Page/Student Dashboard/SelectedClasses";
 import Payments from "../DashBoard Page/Student Dashboard/Payments";
+import PaymentHistory from "../DashBoard Page/Student Dashboard/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -71,8 +72,10 @@ const router = createBrowserRouter([
       {
         path: "payment/:id",
         element: <Payments></Payments>,
-        loader: ({ params }) =>
-          fetch(`http://localhost:4000/selects/${params.email}`),
+      },
+      {
+        path: "paymentHistory",
+        element: <PaymentHistory></PaymentHistory>,
       },
     ],
   },
