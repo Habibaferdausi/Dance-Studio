@@ -84,6 +84,7 @@ const AdminManage = () => {
             <button
               onClick={() => handleSendFeedback(row)}
               className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+              disabled={row.original.buttonsDisabled} // Disable button if buttonsDisabled is true
             >
               Send Feedback
             </button>
@@ -139,12 +140,12 @@ const AdminManage = () => {
       }
 
       await axiosHook.patch(`/classes/${row.original._id}`, {
-        feedback: adminFeedback, // Use the adminFeedback variable as the feedback value
+        feedback: adminFeedback,
       });
 
       const updatedData = data.map((item) =>
         item._id === row.original._id
-          ? { ...item, feedback: adminFeedback, buttonsDisabled: false }
+          ? { ...item, feedback: adminFeedback, buttonsDisabled: true }
           : item
       );
 

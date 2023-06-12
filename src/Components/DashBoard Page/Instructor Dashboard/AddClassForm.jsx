@@ -11,12 +11,17 @@ const AddClassForm = () => {
   const onSubmit = (data) => {
     const formData = new FormData();
     formData.append("image", data.image[0]);
-
     fetch(img_hosting_url, {
       method: "POST",
       body: formData,
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Image upload failed. Status: ${res.status}`);
+        }
+        return res.json();
+      })
+
       .then((imgResponse) => {
         if (imgResponse.success) {
           const imgURL = imgResponse.data.display_url;
@@ -40,11 +45,9 @@ const AddClassForm = () => {
             price: parseFloat(price),
             status: "pending",
             totalEnrolledStudents: 0,
-            feedback: "", // Set the initial value to zero
+            feedback: "",
           };
 
-          // Make an API call to your backend server to save the new class
-          // ...
           fetch("http://localhost:4000/classes", {
             method: "POST",
             headers: {

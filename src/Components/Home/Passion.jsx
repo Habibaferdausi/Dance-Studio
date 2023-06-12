@@ -56,10 +56,10 @@ const Passion = () => {
                   d={items[index].icon}
                 />
               </svg>
-              <h3 className="text-xl font-semibold mb-2 text-white text-center">
+              <h3 className="text-xl font-semibold mb-2 text-black dark:text-white text-center">
                 {items[index].title}
               </h3>
-              <p className="text-gray-200 text-center">
+              <p className="dark:text-gray-200 text-gray-700 text-center">
                 {items[index].description}
               </p>
             </animated.div>
@@ -70,4 +70,4 @@ const Passion = () => {
   );
 };
 
-export default passion;
+export default Passion;

@@ -37,7 +37,7 @@ const PaymentForm = ({ classData }) => {
       console.log(classId);
       const paymentData = {
         paymentMethodId: paymentMethod.id,
-        classId: classData?.classId,
+        classId,
         className: classData?.className,
         email: user?.email,
         price: price,
@@ -70,7 +70,6 @@ const PaymentForm = ({ classData }) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 ">
       <div>
-        {" "}
         <form onSubmit={handleSubmit}>
           <div>
             <h3 className="text-lg font-bold m-4 text-gray-800 dark:text-gray-100">

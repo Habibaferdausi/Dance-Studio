@@ -31,7 +31,7 @@ export const useUserRole = (user) => {
           if (userRole) {
             setUserRole(userRole);
           } else {
-            setUserRole("unknown");
+            setUserRole("user");
           }
         }
       } catch (error) {

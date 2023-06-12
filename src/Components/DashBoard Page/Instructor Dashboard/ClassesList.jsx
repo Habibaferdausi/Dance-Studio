@@ -2,12 +2,12 @@ import React from "react";
 
 const ClassesList = ({ classes }) => {
   return (
-    <div>
+    <div className="grid grid-cols-1 lg:grid-cols-3">
       {classes.map((classItem) => (
         <div key={classItem._id} className="border p-4 my-4">
           <div className="flex items-center justify-between mb-2">
             <h2 className="text-xl font-bold">{classItem.className}</h2>
-            <span className="text-sm font-bold">{classItem.status}</span>
+            <span className="text-sm font-semibold">{classItem.status}</span>
           </div>
           <img
             src={classItem.classImage}
