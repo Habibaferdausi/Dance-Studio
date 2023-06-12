@@ -31,6 +31,7 @@ const PaymentHistory = () => {
         <div key={payment._id}>
           <h2 className="font-bold">Class Name: {payment.className}</h2>
           <p className="font-semibold mb-6">Amount: {payment.price} $</p>
+          <p className="font-semibold mb-6">Date: {payment.paymentDate}</p>
           <hr />
         </div>
       ))}

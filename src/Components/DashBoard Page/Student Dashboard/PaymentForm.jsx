@@ -33,14 +33,19 @@ const PaymentForm = ({ classData }) => {
 
       const price = classData?.price;
       const classId = classData?._id;
+      const paymentDate = new Date();
 
       console.log(classId);
       const paymentData = {
         paymentMethodId: paymentMethod.id,
-        classId,
+        classId: classId,
         className: classData?.className,
+        classImage: classData?.classImage,
         email: user?.email,
+        instructorName: classData?.instructorName,
+        instructorEmail: classData?.instructorEmail,
         price: price,
+        paymentDate: paymentDate,
       };
 
       try {

@@ -67,7 +67,6 @@ const AllUsers = () => {
 
               <th>Role (Admin)</th>
               <th>Role (Instructor)</th>
-              <th>Action</th>
             </tr>
           </thead>
           <tbody className="text-center font-semibold text-gray-800 dark:text-gray-100">
@@ -100,15 +99,6 @@ const AllUsers = () => {
                       Instructor
                     </button>
                   )}
-                </td>
-
-                <td>
-                  <button
-                    onClick={() => handleDelete(user)}
-                    className="btn btn-ghost bg-red-600  text-white"
-                  >
-                    <FaUserAltSlash />
-                  </button>
                 </td>
               </tr>
             ))}

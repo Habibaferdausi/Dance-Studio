@@ -2,60 +2,55 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import useAuth from "../../Hooks/useAuth";
 import useAxios from "../../Hooks/useAxios";
+import { Card } from "flowbite-react";
 
 const EnrolledClass = () => {
-  const [enrolledClasses, setEnrolledClasses] = useState([]);
+  const [enrolled, setEnrolled] = useState([]);
   const { user } = useAuth();
   const [axiosHook] = useAxios();
 
   useEffect(() => {
-    fetchEnrolledClasses();
+    fetchPaymentHistory();
   }, []);
 
-  const fetchEnrolledClasses = async () => {
+  const fetchPaymentHistory = async () => {
     try {
-      const response = await axiosHook.get(`/selects/${user?.email}`);
+      const response = await axiosHook.get(`/payments/${user?.email}`);
       const enrolledData = response.data;
-      setEnrolledClasses(enrolledData);
+      setEnrolled(enrolledData);
     } catch (error) {
       console.error(error);
     }
   };
-
-  const filterEnrolledClasses = async () => {
-    try {
-      const response = await axios.get(`/payments/${user?.email}`);
-      const paymentData = response.data;
-      const paymentIds = paymentData.map((payment) => payment.classId);
-      const filteredClasses = enrolledClasses.filter((enrolledClass) =>
-        paymentIds.includes(enrolledClass._id)
-      );
-      setEnrolledClasses(filteredClasses);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    filterEnrolledClasses();
-  }, [enrolledClasses]);
 
   return (
     <div>
-      <h1 className="text-3xl text-center text-green-900 mt-10">
-        My Enrolled Classes
+      <h1 className="text-3xl text-center text-green-900 mt-10 ">
+        My Enrolled Class
       </h1>
-      {enrolledClasses.length === 0 ? (
-        <p className="text-center mt-5">No enrolled classes found.</p>
-      ) : (
-        <ul className="mt-5">
-          {enrolledClasses.map((enrolledClass) => (
-            <li key={enrolledClass._id} className="mb-2">
-              {enrolledClass.className}
-            </li>
-          ))}
-        </ul>
-      )}
+      {enrolled.map((enroll) => (
+        <div key={enroll._id} className="grid grid-cols-3">
+          <Card
+            imgAlt="Meaningful alt text for an image that is not purely decorative"
+            imgSrc={enroll?.classImage}
+          >
+            <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              <p>{enroll.className}</p>
+            </h5>
+            <p className="font-normal text-gray-700 dark:text-gray-400">
+              <p>
+                Instructor Name: {enroll.instructorName}
+                <br />
+              </p>
+              <p className="font-semibold mb-6">Amount: {enroll.price} $</p>
+              <p className="font-semibold mb-6">
+                {" "}
+                Payment Date: {enroll.paymentDate}
+              </p>
+            </p>
+          </Card>
+        </div>
+      ))}
     </div>
   );
 };
