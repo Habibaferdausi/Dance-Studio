@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 import FooterSection from "../Shared/Footer";
 
 const Main = () => {
-  const [isDarkTheme, setIsDarkTheme] = useState(true);
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   useEffect(() => {
     const htmlTag = document.getElementsByTagName("html")[0];
@@ -17,23 +17,11 @@ const Main = () => {
 
   return (
     <div className={`min-h-screen ${isDarkTheme ? "dark" : ""}`}>
-      <div className="bg-slate-100 dark:bg-gray-800 p-4">
-        <label htmlFor="themeToggle" className="flex items-center space-x-2">
-          <span>Toggle theme:</span>
-          <input
-            type="checkbox"
-            id="themeToggle"
-            checked={isDarkTheme}
-            onChange={toggleTheme}
-            className="form-checkbox h-6 w-6 text-indigo-600"
-          />
-          <span className="text-sm">{isDarkTheme ? "Dark" : "Light"}</span>
-        </label>
-      </div>
+      <div className="bg-slate-100 dark:bg-gray-800 "></div>
 
-      <Nav></Nav>
-      <Outlet></Outlet>
-      <FooterSection></FooterSection>
+      <Nav isDarkTheme={isDarkTheme} toggleTheme={toggleTheme} />
+      <Outlet />
+      <FooterSection />
     </div>
   );
 };

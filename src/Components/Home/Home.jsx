@@ -8,11 +8,13 @@ import WhyChooseUs from "./WHyChooseUs";
 import Passion from "./Passion";
 import Classes from "../Pages/Classes";
 import InstructorsPage from "../Pages/InstructorsPage";
+import AboutUs from "./AboutUs";
 
 const Home = () => {
   return (
     <div className="mx-auto">
       <Banner></Banner>
+      <AboutUs></AboutUs>
       <WhyChooseUs></WhyChooseUs>
       <div className="my-20">
         <Classes></Classes>

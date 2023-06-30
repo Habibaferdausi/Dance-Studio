@@ -130,7 +130,13 @@ const Classes = () => {
 
   return (
     <div className="mb-20 mx-auto">
-      <h1 className=" text-center my-5 pb-7 text-purple-700  text-3xl font-extrabold">
+      <h1
+        data-aos="fade-right"
+        data-aos-offset="300"
+        data-aos-easing="ease-in-sine"
+        style={{ fontFamily: "Lemon, sans-serif" }}
+        className="bg-gradient-to-r text-2xl text-center lg:text-4xl from-pink-400 to-orange-700 text-transparent bg-clip-text mt-10 mb-10"
+      >
         Our Classes
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-9 mx-12">

@@ -1,11 +1,18 @@
-import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
-import { FaSign, FaSignInAlt } from "react-icons/fa";
+import {
+  FaChalkboardTeacher,
+  FaHome,
+  FaSign,
+  FaSignInAlt,
+} from "react-icons/fa";
+import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
+import DarkModeToggle from "react-dark-mode-toggle";
 
-const Nav = () => {
+const Nav = ({ isDarkTheme, toggleTheme }) => {
   const { user, logOut } = useAuth();
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const handleLogOut = () => {
     logOut()
@@ -13,9 +20,42 @@ const Nav = () => {
       .catch((error) => console.log(error));
   };
 
+  useEffect(() => {
+    setIsDarkMode(isDarkTheme);
+  }, [isDarkTheme]);
+
+  const [scroll, setScroll] = useState(false);
+  const handleScroll = () => {
+    if (window.pageYOffset > 0) {
+      setScroll(true);
+    } else {
+      setScroll(false);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handleDarkModeToggle = () => {
+    setIsDarkMode(!isDarkMode);
+    toggleTheme();
+  };
+
   return (
-    <div>
-      <Navbar fluid rounded className="">
+    <div className=" relative">
+      <Navbar
+        fluid
+        rounded
+        className={` fixed top-0 left-0 right-0 z-20 w-full bg-transparent  ${
+          scroll
+            ? "bg-transparent bg-gradient-to-l   from-transparent to-pink-200  "
+            : "bg-transparent"
+        }`}
+        style={{ fontFamily: "Lemon, sans-serif" }}
+      >
         <Navbar.Brand href="/">
           <img
             alt="Logo"
@@ -45,32 +85,70 @@ const Nav = () => {
               </Dropdown.Header>
               <Dropdown.Divider />
               <Dropdown.Item>
-                <button
+                <Button
+                  gradientDuoTone="pinkToOrange"
+                  outline
                   onClick={handleLogOut}
-                  className="btn btn-ghost bg-purple-300  dark:text-black"
                 >
                   LogOut
-                </button>
+                </Button>
               </Dropdown.Item>
             </Dropdown>
           ) : (
             <Navbar.Collapse>
-              <Link
-                to="/login"
-                className="flex justify-center items-center gap-2 bg-yellow-800 rounded p-2 text-white"
-              >
-                <FaSignInAlt /> Login
-              </Link>
+              <Button gradientDuoTone="pinkToOrange" outline>
+                <Link
+                  to="/login"
+                  className="flex justify-center items-center gap-2"
+                >
+                  <FaSignInAlt /> Login
+                </Link>
+              </Button>
             </Navbar.Collapse>
           )}
+          <Navbar.Collapse>
+            <div className="flex items-center space-x-2 ml-2">
+              <DarkModeToggle
+                onChange={handleDarkModeToggle}
+                checked={isDarkMode}
+                size={80}
+              />
+            </div>
+          </Navbar.Collapse>
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse>
-          <Link to="/">Home</Link>
-          <Link to="instructors">Instructors</Link>
-          <Link to="classes"> Classes</Link>
-          {user && <Link to="dashboard">Dashboard</Link>}
-          <Navbar.Link>Contact</Navbar.Link>
+          <Link className="flex gap-2" to="/">
+            <span className="bg-gradient-to-r from-pink-500 to-orange-500 text-transparent bg-clip-text">
+              Home
+            </span>
+          </Link>
+
+          <Link to="instructors">
+            <span className="bg-gradient-to-r from-pink-500 to-orange-500 text-transparent bg-clip-text">
+              Instructors
+            </span>
+          </Link>
+          <Link to="classes">
+            <span className="bg-gradient-to-r from-pink-500 to-orange-500 text-transparent bg-clip-text">
+              Classes
+            </span>
+          </Link>
+          <Link to="/">
+            <span className="bg-gradient-to-r from-pink-500 to-orange-500 text-transparent bg-clip-text">
+              Home
+            </span>
+          </Link>
+          {user && (
+            <Link to="dashboard">
+              <span className="bg-gradient-to-r from-pink-500 to-orange-500 text-transparent bg-clip-text">
+                Dashboard
+              </span>
+            </Link>
+          )}
+          <Navbar.Link className="bg-gradient-to-r from-pink-500 to-orange-500 text-transparent bg-clip-text">
+            Contact
+          </Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
     </div>
