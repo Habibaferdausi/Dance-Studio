@@ -36,7 +36,9 @@ const AboutUs = () => {
           style={{ fontFamily: "Lemon, sans-serif" }}
           className="bg-gradient-to-r text-2xl text-center lg:text-4xl from-pink-500 to-orange-700 text-transparent bg-clip-text mt-10 mb-10"
         >
-          Welcome to Dance Studio
+          <span className="bg-gradient-to-r from-pink-500 to-orange-500 text-transparent bg-clip-text">
+            Welcome To Dance Studio
+          </span>
         </h1>
         <div
           data-aos="fade-up"
@@ -54,14 +56,15 @@ const AboutUs = () => {
             >
               <h1
                 style={{ letterSpacing: "3px" }}
-                className="ms-3 text-2xl lg:text-4xl text-black dark:text-white font-bold"
+                className="text-2xl lg:text-4xl text-blue-600 dark:text-blue-200 font-bold"
               >
                 BEST DANCE SCHOOL &amp; <br></br> STUDIO SINCE 2018
               </h1>
-              <p className="mt-10 text-lg lg:text-xl text-gray-600 dark:text-gray-200">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Delectus dicta rerum reiciendis similique neque voluptatum
-                accusantium? Enim dolore corrupti delectus.
+              <p className=" mt-7 text-lg text-gray-600 dark:text-gray-200">
+                Unleash your dance potential at our award-winning studio since
+                2018. Join our vibrant community, learn from passionate
+                instructors, and embark on an extraordinary journey. Join us
+                today!
               </p>
               <Lottie
                 animationData={learn}

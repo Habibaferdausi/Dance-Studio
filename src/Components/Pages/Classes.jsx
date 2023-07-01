@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-
-import useAuth from "../Hooks/useAuth";
 import { Card } from "flowbite-react";
 import {
   faChalkboardTeacher,
@@ -12,6 +10,9 @@ import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAxios from "../Hooks/useAxios";
 import { useUserRole } from "../Layout/Dashboard";
+import Wave from "react-wavify";
+import useAuth from "../Hooks/useAuth";
+import { FaStar } from "react-icons/fa";
 
 const Classes = () => {
   const [classes, setClasses] = useState([]);
@@ -21,22 +22,23 @@ const Classes = () => {
   const [axiosHook] = useAxios();
 
   const userRole = useUserRole(user);
-  console.log(userRole);
 
   const [selectedClasses, setSelectedClasses] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  axiosHook
-    .get("/filterClasses")
-    .then((response) => {
-      const data = response.data;
-      setClasses(data);
-    })
-    .catch((err) => {
-      console.error("Error retrieving classes:", err);
-      setClasses([]);
-      setIsLoading(false);
-    });
+  useEffect(() => {
+    axiosHook
+      .get("/filterClasses")
+      .then((response) => {
+        const data = response.data;
+        setClasses(data);
+      })
+      .catch((err) => {
+        console.error("Error retrieving classes:", err);
+        setClasses([]);
+        setIsLoading(false);
+      });
+  }, []);
 
   const handleSelectClass = (classData) => {
     const {
@@ -68,7 +70,7 @@ const Classes = () => {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "As a Admin/ Instructor You Can't Select a Class",
+        text: "As an Admin/Instructor, you can't select a class.",
       });
       return;
     }
@@ -78,20 +80,7 @@ const Classes = () => {
         title: "Oops...",
         text: "You have already selected this class.",
       });
-
       return;
-    }
-    if (isLoading) {
-      return (
-        <div className="flex justify-center items-center h-screen">
-          <ClipLoader
-            color="#3B82F6"
-            loading={isLoading}
-            css={override}
-            size={50}
-          />
-        </div>
-      ); // Render spinner while data is loading
     }
 
     setSelectedClasses([...selectedClasses, classData._id]);
@@ -129,76 +118,101 @@ const Classes = () => {
   };
 
   return (
-    <div className="mb-20 mx-auto">
+    <div className="mb-20 mt-10 mx-auto">
+      <Wave mask="url(#mask)" fill="#e77bff">
+        <defs>
+          <linearGradient id="gradient" gradientTransform="rotate(90)">
+            <stop offset="0" stopColor="white" />
+            <stop offset="0.5" stopColor="black" />
+          </linearGradient>
+          <mask id="mask">
+            <rect x="0" y="0" width="2000" height="200" fill="url(#gradient)" />
+          </mask>
+        </defs>
+      </Wave>
       <h1
         data-aos="fade-right"
-        data-aos-offset="300"
+        data-aos-offset="200"
         data-aos-easing="ease-in-sine"
         style={{ fontFamily: "Lemon, sans-serif" }}
         className="bg-gradient-to-r text-2xl text-center lg:text-4xl from-pink-400 to-orange-700 text-transparent bg-clip-text mt-10 mb-10"
       >
-        Our Classes
+        <span className="bg-gradient-to-r from-pink-500 to-orange-500 text-transparent bg-clip-text">
+          Our Classes
+        </span>
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-9 mx-12">
+      <h4
+        className="mt-2 mb-5 text-center text-2xl font-semibold"
+        data-aos="fade-right"
+        data-aos-offset="200"
+        style={{ letterSpacing: "10px" }}
+      >
+        Choose your style
+      </h4>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-9 mt-7 mx-12">
         {classes.map((classData) => (
           <Card
             key={classData?._id}
             imgAlt={classData?.className}
             imgSrc={classData?.classImage}
           >
-            <h5 className="text-2xl font-semibold mb-2 tracking-tight text-gray-900 dark:text-white">
-              <p>{classData?.className}</p>
-            </h5>
-
-            <div className="flex items-center mb-3 justify-between">
-              <span className="text-3xl font-bold text-gray-900 dark:text-white">
-                <span className="font-bold text-gray-700">
-                  <FontAwesomeIcon
-                    icon={faMoneyBills}
-                    className="me-2 text-green-500"
-                  ></FontAwesomeIcon>
-                  Price:
+            <a href="#">
+              <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                <span className="bg-gradient-to-r from-pink-500 to-orange-500 text-transparent bg-clip-text">
+                  {classData?.className}
                 </span>
-                {classData?.price} $
-              </span>
+              </h5>
+            </a>
+            <div className="mb-5 mt-2.5 text-yellow-500 flex items-center">
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaStar />
             </div>
-            <div>
-              <p className="font-semibold text-lg text-orange-400  dark:text-gray-400">
-                <span className="font-bold  text-gray-700">
-                  <FontAwesomeIcon
-                    icon={faChalkboardTeacher}
-                    className="me-2 mb-2 text-red-400"
-                  ></FontAwesomeIcon>
-                  Instructor:
-                </span>{" "}
-                {classData?.instructorName}
-              </p>
-              <p className="font-semibold  flex gap-2 text-lg text-blue-700 dark:text-gray-400">
-                <span className="font-bold  text-gray-700 flex gap-2">
-                  <FontAwesomeIcon
-                    icon={faUserTimes}
-                    className=" text-blue-800"
-                  ></FontAwesomeIcon>{" "}
-                  Available Seats :
-                </span>{" "}
-                {classData?.availableSeats}
-              </p>
-              <p className="rounded-lg bg-cyan-700 px-5 mt-4 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
-                <button
-                  className="text-white  text-lg font-semibold"
-                  disabled={
-                    classData?.availableSeats === "0" ||
-                    (user &&
-                      (user.role === "admin" || user.role === "instructor")) ||
-                    !user
-                  }
-                  onClick={() => handleSelectClass(classData)}
+            <div className="flex items-center justify-between">
+              <span className="text-3xl font-bold text-gray-900 dark:text-white">
+                ${classData?.price}
+              </span>
+              <button
+                className={`rounded-lg bg-cyan-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800 ${
+                  classData?.availableSeats === "0" ||
+                  (user &&
+                    (user.role === "admin" || user.role === "instructor")) ||
+                  !user
+                    ? "cursor-not-allowed"
+                    : ""
+                }`}
+                disabled={
+                  classData?.availableSeats === "0" ||
+                  (user &&
+                    (user.role === "admin" || user.role === "instructor")) ||
+                  !user
+                }
+                onClick={() => handleSelectClass(classData)}
+                style={{
+                  backgroundImage: `url(https://www.ascncfmacademy.com/stock-market/assets/new-images/enroll-now.gif)`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                  backgroundSize: "cover",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "10px",
+                }}
+              >
+                <span
+                  style={{
+                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    padding: "5px 10px",
+                    borderRadius: "5px",
+                  }}
                 >
                   {user && (user.role === "admin" || user.role === "instructor")
                     ? "Logged in as Admin/Instructor"
-                    : "Select"}
-                </button>
-              </p>
+                    : ""}
+                </span>
+              </button>
             </div>
           </Card>
         ))}

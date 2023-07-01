@@ -44,7 +44,7 @@ const WhyChooseUs = () => {
         </defs>
       </Wave>
 
-      <div className=" mt-10 lg:mt-20 ">
+      <div className=" mt-10">
         <h1
           data-aos="fade-right"
           data-aos-offset="300"
@@ -52,7 +52,9 @@ const WhyChooseUs = () => {
           style={{ fontFamily: "Lemon, sans-serif" }}
           className="bg-gradient-to-r text-2xl text-center lg:text-4xl from-pink-400 to-orange-700 text-transparent bg-clip-text mt-10 mb-10"
         >
-          Why Choose Us
+          <span className="bg-gradient-to-r from-pink-500 to-orange-500 text-transparent bg-clip-text">
+            Why Choose Us
+          </span>
         </h1>
         <div
           className="grid grid-cols-1 mt-10 md:grid-cols-3 gap-8 mx-10 lg:mt-12 dark:bg-gray-800"
@@ -64,11 +66,13 @@ const WhyChooseUs = () => {
             <div className="bg-gray-100  dark:bg-gray-700 p-6 rounded-lg shadow-md">
               <div className=" items-center mb-4">
                 <img src={feature.img} className="h-40 w-full" />
-                <h3 className="text-xl mt-5 text-center text-purple-500 dark:text-gray-200 font-semibold">
-                  {feature.title}
+                <h3 className="text-xl mt-5 text-center  font-bold">
+                  <span className="bg-gradient-to-r from-pink-500 to-orange-500 text-transparent bg-clip-text">
+                    {feature.title}
+                  </span>
                 </h3>
               </div>
-              <p className="text-gray-700 dark:text-white">
+              <p className="text-gray-600 dark:text-gray-200">
                 {feature.description}
               </p>
             </div>
