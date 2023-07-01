@@ -1,22 +1,56 @@
 import { Card } from "flowbite-react";
 import React from "react";
+import Wave from "react-wavify";
 
 const ChoosePlan = () => {
   return (
     <div>
-      {" "}
-      <h1 className="text-center my-5  font-bold text-3xl text-purple-700 ">
-        {" "}
-        Choose Plan
-      </h1>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 my-8 mx-20">
+      <Wave mask="url(#mask)" fill="#f88b">
+        <defs>
+          <linearGradient id="gradient" gradientTransform="rotate(90)">
+            <stop offset="0" stopColor="white" />
+            <stop offset="0.5" stopColor="black" />
+          </linearGradient>
+          <mask id="mask">
+            <rect x="0" y="0" width="2000" height="200" fill="url(#gradient)" />
+          </mask>
+        </defs>
+      </Wave>
+      <div>
+        <h1
+          data-aos="fade-right"
+          data-aos-offset="600"
+          data-aos-easing="ease-in-sine"
+          style={{ fontFamily: "Lemon, sans-serif" }}
+          className="bg-gradient-to-r text-2xl text-center lg:text-4xl from-pink-400 to-orange-700 text-transparent bg-clip-text mt-10 mb-10"
+        >
+          <span className="bg-gradient-to-r from-pink-500 to-orange-500 text-transparent bg-clip-text">
+            Choose Plan
+          </span>
+        </h1>
+        <h4
+          className="mt-2 mb-5 text-center text-2xl text-blue-600 dark:text-blue-200 font-semibold"
+          data-aos="fade-right"
+          data-aos-offset="600"
+          data-aos-easing="ease-in-sine"
+          style={{ letterSpacing: "10px" }}
+        >
+          Our Membership
+        </h4>
+      </div>
+      <div
+        data-aos="flip-left"
+        data-aos-easing="ease-out-cubic"
+        data-aos-duration="2000"
+        className="grid grid-cols-1 lg:grid-cols-3 gap-5 my-8 mx-20"
+      >
         <Card>
-          <h5 className="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">
+          <h5 className="mb-4 text-xl font-medium mb-5  text-gray-500 dark:text-gray-400">
             Beginner Plan
           </h5>
-          <div className="flex items-baseline text-gray-900 dark:text-white">
+          <div className="flex items-baseline text-blue-600 dark:text-blue-200">
             <span className="text-3xl font-semibold">$</span>
-            <span className="text-5xl font-extrabold tracking-tight">29</span>
+            <span className="text-5xl font-extrabold  tracking-tight">29</span>
             <span className="ml-1 text-xl font-normal text-gray-500 dark:text-gray-400">
               /month
             </span>
@@ -70,7 +104,7 @@ const ChoosePlan = () => {
           <h5 className="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">
             Intermediate Plan
           </h5>
-          <div className="flex items-baseline text-gray-900 dark:text-white">
+          <div className="flex items-baseline text-blue-600 dark:text-blue-200">
             <span className="text-3xl font-semibold">$</span>
             <span className="text-5xl font-extrabold tracking-tight">59</span>
             <span className="ml-1 text-xl font-normal text-gray-500 dark:text-gray-400">
@@ -126,7 +160,7 @@ const ChoosePlan = () => {
           <h5 className="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">
             Advanced Plan
           </h5>
-          <div className="flex items-baseline text-gray-900 dark:text-white">
+          <div className="flex items-baseline text-blue-600 dark:text-blue-200">
             <span className="text-3xl font-semibold">$</span>
             <span className="text-5xl font-extrabold tracking-tight">99</span>
             <span className="ml-1 text-xl font-normal text-gray-500 dark:text-gray-400">
