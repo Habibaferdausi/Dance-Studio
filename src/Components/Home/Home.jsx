@@ -9,6 +9,7 @@ import Passion from "./Passion";
 import Classes from "../Pages/Classes";
 import InstructorsPage from "../Pages/InstructorsPage";
 import AboutUs from "./AboutUs";
+import BlogSection from "./BlogSection";
 
 const Home = () => {
   return (
@@ -16,13 +17,13 @@ const Home = () => {
       <Banner></Banner>
       <AboutUs></AboutUs>
       <WhyChooseUs></WhyChooseUs>
-      <div className="my-20">
-        <Classes></Classes>
-      </div>
+
+      <Classes></Classes>
 
       <ChoosePlan></ChoosePlan>
       <Countdown></Countdown>
       <InstructorsPage></InstructorsPage>
+      <BlogSection></BlogSection>
       <Available></Available>
     </div>
   );

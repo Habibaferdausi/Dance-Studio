@@ -32,7 +32,7 @@ const features = [
 const WhyChooseUs = () => {
   return (
     <div>
-      <Wave mask="url(#mask)" fill="#1179a0">
+      <Wave mask="url(#mask)" fill="#0070a0">
         <defs>
           <linearGradient id="gradient" gradientTransform="rotate(90)">
             <stop offset="0" stopColor="white" />
