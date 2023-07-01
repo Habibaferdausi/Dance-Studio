@@ -10,6 +10,7 @@ import Classes from "../Pages/Classes";
 import InstructorsPage from "../Pages/InstructorsPage";
 import AboutUs from "./AboutUs";
 import BlogSection from "./BlogSection";
+import UpcomingEvents from "./UpcomingEvents";
 
 const Home = () => {
   return (
@@ -24,6 +25,7 @@ const Home = () => {
       <Countdown></Countdown>
       <InstructorsPage></InstructorsPage>
       <BlogSection></BlogSection>
+      <UpcomingEvents></UpcomingEvents>
       <Available></Available>
     </div>
   );
