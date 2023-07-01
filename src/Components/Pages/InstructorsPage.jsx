@@ -34,11 +34,25 @@ const InstructorsPage = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold   text-purple-700  mb-5 text-center">
-        Our Instructors
+      <h1
+        data-aos="fade-right"
+        data-aos-offset="200"
+        data-aos-easing="ease-in-sine"
+        style={{ fontFamily: "Lemon, sans-serif" }}
+        className="bg-gradient-to-r text-2xl text-center lg:text-4xl from-pink-400 to-orange-700 text-transparent bg-clip-text mt-10 mb-10"
+      >
+        <span className="bg-gradient-to-r from-pink-500 to-orange-500 text-transparent bg-clip-text">
+          Our Instructors
+        </span>
       </h1>
+
       {instructors.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-9 mx-12">
+        <div
+          data-aos="fade-right"
+          data-aos-offset="200"
+          data-aos-easing="ease-in-sine"
+          className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 mt-6 gap-9 mx-12"
+        >
           {instructors.map((instructor) => (
             <Card key={instructor._id} className="shadow-2xl">
               <div className="flex flex-col items-center pb-3">

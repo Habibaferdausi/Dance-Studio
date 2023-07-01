@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const Countdown = () => {
   const [countdown, setCountdown] = useState({
-    days: 30,
+    days: 7,
     hours: 0,
     minutes: 0,
     seconds: 0,
@@ -55,12 +55,12 @@ const Countdown = () => {
       <div
         className="flex flex-col  items-center  mb-20 justify-center lg:h-screen bg-cover bg-fixed"
         style={{
-          height: "500px",
+          height: "600px",
           backgroundImage:
-            "url(https://images.pexels.com/photos/2057274/pexels-photo-2057274.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)",
+            "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(https://images.unsplash.com/photo-1550026593-cb89847b168d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80)",
         }}
       >
-        <h1 className="lg:text-4xl text-sm font-bold text-black mx-12   bg-gray-200 p-6 bg-opacity-70">
+        <h1 className="lg:text-4xl text-sm font-bold text-black mx-12 rounded  bg-gray-200 p-6 bg-opacity-70">
           Our Next Class Starts In:
         </h1>
         <div className="mx-20 lg:mx-10 ">
