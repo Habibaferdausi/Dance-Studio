@@ -35,18 +35,19 @@ const Banner = () => (
         }}
         className="text-start mt-20 text-bold relative"
       >
-        <div
-          data-aos="fade-up-right"
-          className=" pt-10 lg:pt-40 mt-20 mx-4 lg:mx-20  flex justify-center items-center flex-col "
-        >
-          <h3 className="text-xl pt-11 lg:text-4xl">Came Join Our </h3>
+        <div className=" pt-10 lg:pt-40 mt-20 mx-4 lg:mx-20  flex justify-center items-center flex-col ">
+          <h3 data-aos="fade-right" className="text-xl pt-11 lg:text-4xl">
+            Came Join Our{" "}
+          </h3>
           <h1
+            data-aos="fade-left"
             className="text-3xl mt-4 lg:mt-11 lg:text-7xl "
             style={{ fontFamily: "Lemon, sans-serif" }}
           >
             Dance Studio
           </h1>
           <p
+            data-aos="fade-right"
             className="mt-6 lg:mt-10 text-xl lg:text-3xl font-bold uppercase"
             style={{ letterSpacing: "10px" }}
           >
