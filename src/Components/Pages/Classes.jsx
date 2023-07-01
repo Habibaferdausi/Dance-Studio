@@ -142,28 +142,34 @@ const Classes = () => {
         </span>
       </h1>
       <h4
-        className="mt-2 mb-5 text-center text-2xl font-semibold"
+        className="mt-2 mb-5 text-center text-2xl text-blue-600 dark:text-blue-200 font-semibold"
         data-aos="fade-right"
         data-aos-offset="200"
         style={{ letterSpacing: "10px" }}
       >
         Choose your style
       </h4>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-9 mt-7 mx-12">
+      <div
+        data-aos="fade-right"
+        data-aos-offset="300"
+        data-aos-easing="ease-in-sine"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-9 mt-10 lg:mt-20 "
+      >
         {classes.map((classData) => (
           <Card
+            className="w-80 mb-7 h-100 mx-auto"
             key={classData?._id}
             imgAlt={classData?.className}
             imgSrc={classData?.classImage}
           >
-            <a href="#">
-              <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+            <div className="bg-pink-100 p-5 text-center dark:bg-gray-700">
+              <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                 <span className="bg-gradient-to-r from-pink-500 to-orange-500 text-transparent bg-clip-text">
                   {classData?.className}
                 </span>
               </h5>
-            </a>
-            <div className="mb-5 mt-2.5 text-yellow-500 flex items-center">
+            </div>
+            <div className="mb-4 mt-2.5 text-yellow-500 flex items-center">
               <FaStar />
               <FaStar />
               <FaStar />
@@ -171,11 +177,11 @@ const Classes = () => {
               <FaStar />
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-3xl font-bold text-gray-900 dark:text-white">
+              <span className="text-3xl font-bold text-blue-600 dark:text-white">
                 ${classData?.price}
               </span>
               <button
-                className={`rounded-lg bg-cyan-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800 ${
+                className={` ${
                   classData?.availableSeats === "0" ||
                   (user &&
                     (user.role === "admin" || user.role === "instructor")) ||
@@ -191,26 +197,20 @@ const Classes = () => {
                 }
                 onClick={() => handleSelectClass(classData)}
                 style={{
-                  backgroundImage: `url(https://www.ascncfmacademy.com/stock-market/assets/new-images/enroll-now.gif)`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center",
-                  backgroundSize: "cover",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
                   padding: "10px",
                 }}
               >
-                <span
-                  style={{
-                    backgroundColor: "rgba(0, 0, 0, 0.5)",
-                    padding: "5px 10px",
-                    borderRadius: "5px",
-                  }}
-                >
-                  {user && (user.role === "admin" || user.role === "instructor")
-                    ? "Logged in as Admin/Instructor"
-                    : ""}
+                <span>
+                  {user &&
+                  (user.role === "admin" || user.role === "instructor") ? (
+                    "Logged in as Admin/Instructor"
+                  ) : (
+                    <img
+                      src="https://media2.giphy.com/media/ZIER92NnlAmChYwLlr/200.gif?cid=6c09b952dh5l8vjhr12rl1aqaviqfdbl6bncsbwsdvfj40kv&ep=v1_internal_gif_by_id&rid=200.gif&ct=g"
+                      alt="Enroll Now"
+                      style={{ width: "110px" }}
+                    />
+                  )}
                 </span>
               </button>
             </div>
