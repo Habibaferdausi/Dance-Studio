@@ -56,11 +56,11 @@ const AboutUs = () => {
             >
               <h1
                 style={{ letterSpacing: "3px" }}
-                className="text-2xl lg:text-4xl text-blue-600 dark:text-blue-200 font-bold"
+                className="text-2xl lg:text-4xl text-blue-600 ms-9 lg:ms-1 dark:text-blue-200 font-bold"
               >
                 BEST DANCE SCHOOL &amp; <br></br> STUDIO SINCE 2018
               </h1>
-              <p className=" mt-7 text-lg text-gray-600 dark:text-gray-200">
+              <p className=" mt-7 text-lg ms-9 lg:ms-1 text-gray-600 dark:text-gray-200">
                 Unleash your dance potential at our award-winning studio since
                 2018. Join our vibrant community, learn from passionate
                 instructors, and embark on an extraordinary journey. Join us

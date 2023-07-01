@@ -19,7 +19,7 @@ const ChoosePlan = () => {
       <div>
         <h1
           data-aos="fade-right"
-          data-aos-offset="600"
+          data-aos-offset="300"
           data-aos-easing="ease-in-sine"
           style={{ fontFamily: "Lemon, sans-serif" }}
           className="bg-gradient-to-r text-2xl text-center lg:text-4xl from-pink-400 to-orange-700 text-transparent bg-clip-text mt-10 mb-10"
@@ -31,7 +31,7 @@ const ChoosePlan = () => {
         <h4
           className="mt-2 mb-5 text-center text-2xl text-blue-600 dark:text-blue-200 font-semibold"
           data-aos="fade-right"
-          data-aos-offset="600"
+          data-aos-offset="300"
           data-aos-easing="ease-in-sine"
           style={{ letterSpacing: "10px" }}
         >
@@ -41,7 +41,7 @@ const ChoosePlan = () => {
       <div
         data-aos="flip-left"
         data-aos-easing="ease-out-cubic"
-        data-aos-duration="2000"
+        data-aos-duration="3000"
         className="grid grid-cols-1 lg:grid-cols-3 gap-5 my-8 mx-20"
       >
         <Card>

@@ -51,7 +51,7 @@ const InstructorsPage = () => {
           data-aos="fade-right"
           data-aos-offset="200"
           data-aos-easing="ease-in-sine"
-          className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 mt-6 gap-9 mx-12"
+          className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 mt-6 mb-11 gap-9 mx-12"
         >
           {instructors.map((instructor) => (
             <Card key={instructor._id} className="shadow-2xl">

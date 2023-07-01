@@ -1,36 +1,52 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faApple, faGooglePlay } from "@fortawesome/free-brands-svg-icons";
+import Wave from "react-wavify";
+import Download from "../../../public/dwnload.json";
+import play from "../../../public/google.json";
+import ios from "../../../public/apple.json";
+import Lottie from "lottie-react";
 
 const Available = () => {
   return (
-    <section
-      className="py-12 bg-gradient-to-r from-purple-800 to-indigo-800"
-      style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1512149673953-1e251807ec7c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8 text-white">
+    <div>
+      <Wave mask="url(#mask)" fill="#ff9d5c">
+        <defs>
+          <linearGradient id="gradient" gradientTransform="rotate(90)">
+            <stop offset="0" stopColor="white" />
+            <stop offset="0.5" stopColor="black" />
+          </linearGradient>
+          <mask id="mask">
+            <rect x="0" y="0" width="2000" height="200" fill="url(#gradient)" />
+          </mask>
+        </defs>
+      </Wave>
+
+      <h1
+        data-aos="fade-right"
+        data-aos-offset="300"
+        data-aos-easing="ease-in-sine"
+        style={{ fontFamily: "Lemon, sans-serif" }}
+        className="bg-gradient-to-r text-2xl text-center lg:text-4xl from-pink-400 to-orange-700 text-transparent bg-clip-text mt-10 mb-10"
+      >
+        <span className="bg-gradient-to-r from-pink-500 to-orange-500 text-transparent bg-clip-text">
           Available on App Stores
-        </h2>
-        <div className="lg:flex gap-9 mb-7  justify-center items-center">
-          <img
-            src="https://i.ibb.co/MkmQXDh/google-play-logo.webp"
-            className="h-20"
-            alt=""
+        </span>
+      </h1>
+      <div className="mt-5 grid grid-cols-1 lg:grid-cols-2">
+        <div className="mx-auto">
+          <Lottie animationData={Download} />
+        </div>
+        <div className="lg:flex mx-auto ">
+          <Lottie
+            animationData={play}
+            style={{ width: "260px" }}
+            className="ms-9 lg:ms-1"
           />
-          <img
-            src="https://i.ibb.co/ZGcWdzw/apple-app-store-logo.jpg"
-            className="h-20"
-            alt=""
-          />
+          <Lottie animationData={ios} style={{ width: "320px" }} />
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
