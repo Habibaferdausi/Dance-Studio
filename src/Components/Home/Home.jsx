@@ -11,6 +11,7 @@ import InstructorsPage from "../Pages/InstructorsPage";
 import AboutUs from "./AboutUs";
 import BlogSection from "./BlogSection";
 import UpcomingEvents from "./UpcomingEvents";
+import ContactUs from "./ContactUs";
 
 const Home = () => {
   return (
@@ -26,6 +27,7 @@ const Home = () => {
       <InstructorsPage></InstructorsPage>
       <BlogSection></BlogSection>
       <UpcomingEvents></UpcomingEvents>
+      <ContactUs></ContactUs>
       <Available></Available>
     </div>
   );

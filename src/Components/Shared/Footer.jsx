@@ -3,29 +3,44 @@ import React from "react";
 const FooterSection = () => {
   return (
     <footer className="footer p-10 bg-base-200 text-base-content">
-      <div>
+      <div className="flex items-center justify-center mb-5">
         <img
           src="https://i.ibb.co/PwPjsVY/AK-removebg-preview.png"
+          alt="Logo"
           className="h-40"
-        ></img>
-        <h1 className="text-xl text-bold text-center">Dance Studio</h1>
+        />
+        <h1 className="text-xl font-bold">Dance Studio</h1>
       </div>
-      <div>
+      <div className="flex flex-col mb-5">
         <span className="footer-title">Company</span>
-        <a className="link link-hover">About us</a>
-        <a className="link link-hover">Contact</a>
-        <a className="link link-hover">Jobs</a>
-        <a className="link link-hover">Press kit</a>
+        <a href="#" className="link link-hover">
+          About us
+        </a>
+        <a href="#" className="link link-hover">
+          Contact
+        </a>
+        <a href="#" className="link link-hover">
+          Jobs
+        </a>
+        <a href="#" className="link link-hover">
+          Press kit
+        </a>
       </div>
-      <div>
+      <div className="flex flex-col mb-5">
         <span className="footer-title">Legal</span>
-        <a className="link link-hover">Terms of use</a>
-        <a className="link link-hover">Privacy policy</a>
-        <a className="link link-hover">Cookie policy</a>
+        <a href="#" className="link link-hover">
+          Terms of use
+        </a>
+        <a href="#" className="link link-hover">
+          Privacy policy
+        </a>
+        <a href="#" className="link link-hover">
+          Cookie policy
+        </a>
       </div>
-      <div>
+      <div className="flex flex-col">
         <span className="footer-title">Contact Us</span>
-        <p>102/street NYC</p>
+        <p>102 Street, NYC</p>
         <p>Mobile: +12346789</p>
         <span className="footer-title mt-5">Newsletter</span>
         <div className="form-control w-80">

@@ -44,7 +44,7 @@ const UpcomingEvents = () => {
 
   return (
     <section
-      className="py-12 bg-fixed"
+      className="py-12 bg-fixed "
       style={{
         backgroundImage:
           "url('https://images.unsplash.com/photo-1473691955023-da1c49c95c78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80')",
@@ -65,7 +65,7 @@ const UpcomingEvents = () => {
           </span>
         </h1>
         <div
-          className="flex flex-col-reverse items-end"
+          className="lg:flex lg:flex-col-reverse lg:items-end  "
           data-aos="fade-left"
           data-aos-offset="400"
           data-aos-easing="ease-in-sine"
@@ -73,9 +73,9 @@ const UpcomingEvents = () => {
           {events.map((event, index) => (
             <div
               key={index}
-              className="grid grid-cols-4 w-1/2 mb-4 bg-gradient-to-r from-gray-900 to-transparent opacity-75"
+              className="grid grid-cols-4 lg:w-1/2 w-full ms-3 lg:ms-1 mb-4 bg-gradient-to-r from-gray-900 to-transparent opacity-75"
             >
-              <div className="col-span-1 bg-blue-600 dark:bg-gray-900 p-6 flex flex-col items-center">
+              <div className="lg:col-span-1 col-span-3 bg-blue-600 dark:bg-gray-900 p-6 flex flex-col items-center">
                 <p
                   className="text-white text-4xl font-bold"
                   style={{ margin: "auto" }}
