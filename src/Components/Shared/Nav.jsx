@@ -136,7 +136,7 @@ const Nav = ({ isDarkTheme, toggleTheme }) => {
           </Link>
           <Link to="/">
             <span className="bg-gradient-to-r from-pink-500 to-orange-500 text-transparent bg-clip-text">
-              Home
+              Blogs
             </span>
           </Link>
           {user && (
