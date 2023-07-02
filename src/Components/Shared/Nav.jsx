@@ -134,7 +134,7 @@ const Nav = ({ isDarkTheme, toggleTheme }) => {
               Classes
             </span>
           </Link>
-          <Link to="/">
+          <Link to="/blogs">
             <span className="bg-gradient-to-r from-pink-500 to-orange-500 text-transparent bg-clip-text">
               Blogs
             </span>
@@ -147,7 +147,11 @@ const Nav = ({ isDarkTheme, toggleTheme }) => {
             </Link>
           )}
           <Navbar.Link className="bg-gradient-to-r from-pink-500 to-orange-500 text-transparent bg-clip-text">
-            Contact
+            <Link to="/contacts">
+              <span className="bg-gradient-to-r from-pink-500 to-orange-500 text-transparent bg-clip-text">
+                Contacts
+              </span>
+            </Link>
           </Navbar.Link>
         </Navbar.Collapse>
       </Navbar>

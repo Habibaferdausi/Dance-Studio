@@ -18,6 +18,8 @@ import Payments from "../DashBoard Page/Student Dashboard/Payments";
 import PaymentHistory from "../DashBoard Page/Student Dashboard/PaymentHistory";
 import EnrolledClass from "../DashBoard Page/Student Dashboard/EnrolledClass";
 import ErrorPage from "../Shared/ErrorPage";
+import BlogSection from "../Home/BlogSection";
+import ContactUs from "../Home/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +34,14 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login></Login>,
+      },
+      {
+        path: "blog",
+        element: <BlogSection></BlogSection>,
+      },
+      {
+        path: "contacts",
+        element: <ContactUs></ContactUs>,
       },
       {
         path: "register",
