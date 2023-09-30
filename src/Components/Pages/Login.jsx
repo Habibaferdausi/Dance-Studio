@@ -140,7 +140,7 @@ const Login = () => {
               Don't have an account?{" "}
               <a
                 href="/register"
-                className="text-blue-500  font-bold hover:underline"
+                className="text-red-600  font-bold hover:underline"
               >
                 Register Here
               </a>

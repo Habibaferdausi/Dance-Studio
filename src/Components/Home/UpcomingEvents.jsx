@@ -58,7 +58,7 @@ const UpcomingEvents = () => {
           data-aos-offset="300"
           data-aos-easing="ease-in-sine"
           style={{ fontFamily: "Lemon, sans-serif" }}
-          className="bg-gradient-to-r text-2xl text-left lg:text-4xl from-pink-200 to-orange-400 text-transparent bg-clip-text mt-10 mb-10"
+          className="bg-gradient-to-r ms-4 text-2xl text-left lg:text-4xl from-pink-200 to-orange-400 text-transparent bg-clip-text mt-10 mb-10"
         >
           <span className="bg-gradient-to-r from-pink-500 to-orange-500 text-transparent bg-clip-text">
             Upcoming events

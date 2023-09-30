@@ -107,9 +107,13 @@ const Register = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="max-w-md w-full p-6 bg-white shadow-md rounded-md">
-        <h2 className="text-2xl font-semibold mb-4">Registration</h2>
+    <div className="flex flex-col items-center justify-center min-h-screen mt-11 pt-5 bg-gray-100">
+      <div className="max-w-md w-full p-6 mt-10 bg-white shadow-md rounded-md">
+        <h2 className="text-2xl mt-11 font-bold mb-4">
+          <span className="bg-gradient-to-r from-pink-500 to-orange-500 text-transparent bg-clip-text">
+            Registration Now
+          </span>
+        </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="flex flex-col">
             <label htmlFor="name" className="text-sm font-medium">
@@ -233,9 +237,12 @@ const Register = () => {
           <div className="flex space-x-2 mt-2">
             <button
               onClick={handleGoogleSignIn}
-              className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+              className=" py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
             >
-              Google
+              <img
+                src="https://onymos.com/wp-content/uploads/2020/10/google-signin-button.png"
+                alt=""
+              />
             </button>
           </div>
         </div>

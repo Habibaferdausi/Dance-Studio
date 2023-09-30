@@ -20,7 +20,7 @@ const Main = () => {
       <div className="bg-slate-100 dark:bg-gray-800 "></div>
 
       <Nav isDarkTheme={isDarkTheme} toggleTheme={toggleTheme} />
-      <Outlet />
+      <Outlet className="max-w-screen-2xl mx-auto" />
       <FooterSection />
     </div>
   );

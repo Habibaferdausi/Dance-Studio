@@ -15,20 +15,22 @@ import ContactUs from "./ContactUs";
 
 const Home = () => {
   return (
-    <div className="mx-auto">
+    <div className=" mx-auto">
       <Banner></Banner>
-      <AboutUs></AboutUs>
-      <WhyChooseUs></WhyChooseUs>
+      <div className="max-w-screen-2xl mx-auto">
+        <AboutUs></AboutUs>
+        <WhyChooseUs></WhyChooseUs>
 
-      <Classes></Classes>
+        <Classes></Classes>
 
-      <ChoosePlan></ChoosePlan>
-      <Countdown></Countdown>
-      <InstructorsPage></InstructorsPage>
-      <BlogSection></BlogSection>
-      <UpcomingEvents></UpcomingEvents>
-      <ContactUs></ContactUs>
-      <Available></Available>
+        <ChoosePlan></ChoosePlan>
+        <Countdown></Countdown>
+        <InstructorsPage></InstructorsPage>
+        <BlogSection></BlogSection>
+        <UpcomingEvents></UpcomingEvents>
+        <ContactUs></ContactUs>
+        <Available></Available>
+      </div>
     </div>
   );
 };
